@@ -1,0 +1,66 @@
+1 /2 / 14
+The indicator code needs to be redesigned.  Much is hard coded and seperated in different sections, does not follow the standard conventions for other controls 
+and is now cumbersome to work with.
+ Some is in sitemaster html code, some is in Assest/indicators/Scripts/IndicatorCOntrol_v_4.js , indicatorsCore_v2.js, and reportindicator.js 
+The Sitemaster , indicatorscore and indicatorsreport must all be in sync or the system will not work.  
+adding , deleting , or changes to an indicator will require changes in three separate places
+
+There is some stanbdard support for indicators in the indicator class, but none of this is documented well.
+
+Originally a canvas was dynamically inserted into a DIV based on the div id, but now this is being insterted into a H2 element
+
+The indicator label is in the H2 element, the element rendering is done in a dynamically added canvas, and the help is liked into he 
+ASP help system but is coded using a different tag than the fieldbame and is lnked to a div container holding the h2 element and is not 
+associated with a ? icon as are all other controls.  The old indicator files based on the fieldname are still in the help file folder.
+Not sure when this all got changed.
+
+How these indicators are coded in the HTML also impacts the report generation tools.  Must be synced with this as well.
+
+Here is some documentation for Indicator CLass
+id = ControlId for indicator object
+width = width of canvas
+height = height of canvas
+DivID = id for element the canvas is add to
+IndicatorType = a code for the type of indicator, used by paint to route to unique paint code
+MinValue = 0; // default
+MaxValue = 150; // default
+value = 0;  // current value for indicator
+SetValue = function (value)  sets the value for indicator, repaints canvas  
+offsetleft = 4;
+offsetright = 7;
+offsettop = 4;
+offsetbottom = 4;
+Frame = Frame()  used to keep graphics inside a drawing area
+background = "white";
+resize = function (width, height) used to resize the indicator
+oncLick = function (event) used to respond to a click, assign a function, this is assigned to the canvas, but does not work becuase not assigned to canvas if this is set to a value
+Paint = function () paints the object
+canvas = the canvas used ri draw on
+CT = the canvas context 2D
+Colors = new IndicatorColors("lightskyblue", "royalblue", "darkgreen", "darkolivegreen", "darkkhaki", "khaki", "gold", "burlywood", "peachpuff", "mediumblue", "yellowgreen", "lawngreen", "seagreen", "peru","#777777");
+
+
+
+function Frame(left, top, width, height) {
+    this.left = left;
+    this.top = top;
+    this.width = width;
+    this.height = height;
+    this.reset = function () {
+    }
+
+function IndicatorColors(SkyColor, WaterColor, CloseColor, NearColor, MidColor, FarColor, SunColor, EarthColor, WallColor, PeopleColor, TreeColor, GrassColor, CactusColor, BuildingColor, TableTopColor) {
+    this.Sky = SkyColor;
+    this.Water = WaterColor;
+    this.Near = NearColor;
+    this.Mid = MidColor;
+    this.Far = FarColor;
+    this.Sun = SunColor;
+    this.Earth = EarthColor;
+    this.Wall = WallColor;
+    this.People = PeopleColor;
+    this.Tree = TreeColor;
+    this.Grass = GrassColor;
+    this.Cactus = CactusColor;
+    this.Building = BuildingColor;
+    this.TableTop = TableTopColor;
