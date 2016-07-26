@@ -29,6 +29,9 @@ $(function () {
         height: 300,
         width: 300,
         modal: true,
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+        },
         buttons: {
             "Done": {
                 click: function () {

@@ -107,57 +107,107 @@ $(document).keydown(function (e) {
     }
 });
 
+//Source: http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
+//Get URL parameter 'name'
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    }
+    else {
+        return results[1] || 0;
+    }
+}
 
 $(document).ready(function () {
 
-
-    $("#ui-id-2").click(function () {
-        if (keyPressed == "dt") {
+    // STEPTOE EDIT 07/25/16
+    // Update selectors to use href tags for identification
+    $('a[href="#tabs-2"]').click(function () {
+        if (keyPressed == "dt") {            
             openSupplyWindow();
         }
         else
-            if (shiftPressed && ctrlPressed) {
-                shiftPressed = false;
-                ctrlPressed = false;
+            if (shiftPressed && ctrlPressed) {                
                 openSupplyWindow();
             }
     });
 
-    $("#ui-id-3").click(function () {
+    $('a[href="#tabs-3"]').click(function () {
         if (keyPressed == "dt") {
             openDemandWindow();
         }
         else
             if (shiftPressed && ctrlPressed) {
-                shiftPressed = false;
-                ctrlPressed = false;
                 openDemandWindow();
             }
     });
 
-    $("#ui-id-4").click(function () {
+    $('a[href="#tabs-4"]').click(function () {
         if (keyPressed == "dt") {
             openReservoirsRiversWindow();
         }
         else
             if (shiftPressed && ctrlPressed) {
-                shiftPressed = false;
-                ctrlPressed = false;
                 openReservoirsRiversWindow();
             }
     });
 
-    $("#ui-id-5").click(function () {
+    $('a[href="#tabs-5"]').click(function () {
         if (keyPressed == "dt") {
             openSustainabilityWindow();
         }
         else
             if (shiftPressed && ctrlPressed) {
-                shiftPressed = false;
-                ctrlPressed = false;
                 openSustainabilityWindow();
             }
     });
+
+    // STEPTOE EDIT 07/25/16
+    // 1) Make geography tab active
+    // 2) Hide Temporal tab button
+    $('[aria-controls="settings-tabs-geography-2"] a').click();
+    $('[aria-controls="settings-tabs-geography-1"]').hide();
+
+    var login = $.urlParam('login');
+    if (login != null) {
+        $('body').append(
+            '<div id="dialog-login" title="Login">' +
+                '<label for="groupName">Please enter a group name:</label>' +
+                '<input type="text" id="groupName" name="groupName"><br>' +
+                '<label for="userName">Please enter a username (if applicable):</label>' +
+                '<input type="text" id="userName" name="userName"><br>' +
+			    '</div>' +
+            '</div>'
+        );
+
+        $("#dialog-login").dialog({
+            autoOpen: false,
+            resizable: false,
+            closeOnEscape: false,
+            height: 180,
+            width: 500,
+            modal: true,
+            open: function(event, ui) {
+                $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+            },
+            buttons: {
+                "Login": {
+                    click: function () {
+                        console.log($('#groupName').val() + ', ' + $('#userName').val())
+                        $('.slider-container').css('z-index', 'auto');
+                        $(this).dialog("close");
+                    },
+                    'class': 'button',
+                    text: 'Login'
+                }
+            }
+        });
+
+        $('.slider-container').css('z-index', 0);
+
+        $("#dialog-login").dialog("open");
+    }
     
 });
 //********************************************************
@@ -241,6 +291,13 @@ function initCommunication(index) {
 }
 //Open a new window with specified params and begin communication
 function newTab(paramType, size, windowLocation) {
+
+    // STEPTOE EDIT 07/25/16
+    // Reset hotkeys, after each new tab is opened
+    keyPressed = "";
+    shiftPressed = false;
+    ctrlPressed = false;
+
     if (typeof (paramType) != "undefined" && paramType != null) {
         if (typeof (size) != "undefined" && size != null) {
             var tempWindow = window.open(Com.chartWindowPath + paramType, "_blank", "location=no,toolbar=no,menubar=no,scrollbars=yes,resizable=yes" + size);

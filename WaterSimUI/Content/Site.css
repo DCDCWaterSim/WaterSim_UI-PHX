@@ -208,15 +208,26 @@ h7 {
     /*border: 2px solid #FFFFFF; */
    /*color: #FFFFFF;*/
    /* padding: 7px;*/
-    padding-top:3px;
+
+    /*STEPTOE EDIT BEGIN WaterSim-America style button*/
+    /*padding-top:3px;
     width: 190px;
-    margin-left:10px;
+    margin-left:10px;*/
+    padding-top:2px;
+    width: 190px;
+    height: 50px;
+    margin-left:20px;
+    /*STEPTOE EDIT END WaterSim-America style button*/
+
     float:left;
 }
 
 .run-model:hover {
     cursor: pointer;
-    color: #FFB310;
+    /*STEPTOE EDIT BEGIN WaterSim-America style button*/
+    /*color: #FFB310;*/
+    color: #990033;
+    /*STEPTOE EDIT END WaterSim-America style button*/
 }
 
 .trace-CO {
@@ -797,6 +808,10 @@ option {
     color: #FFFFFF !important;
 }
 
+/* STEPTOE EDIT 07/25/16 hide Highcharts menu options*/
+.highcharts-button {
+    display: none;
+}
 
 .chart {
     width: 500px;

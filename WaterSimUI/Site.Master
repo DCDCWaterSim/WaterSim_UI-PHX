@@ -233,8 +233,11 @@
                        <div id="pageslide-button-container">
                 <a href="#pageslide-button"><img id="openGear" class="gear-button" src="Images/gear_icon.png" width="32" height="32" Title=""/></a>
             </div>
-     <!-- QUAY EDIT FOR NEW RUN BUTTON 12 18 14 ------------------->           
-                <img src="Images/RunModelGrey.png" class="run-model" id="run-model-Main" />
+     <!-- QUAY EDIT FOR NEW RUN BUTTON 12 18 14 ------------------->
+                <!-- STEPTOE EDIT BEGIN WaterSim-America style button -->        
+                <input type="button" class="run-model" id="run-model-Main" value="Run Model" style="height: 40px; width: 200px; text-align:center; padding: 1px; background-color: lightgrey; font-family:Arial; font-size: 30px;"/>
+                <!--<img src="Images/RunModelGrey.png" class="run-model" id="run-model-Main" />-->
+                <!-- STEPTOE EDIT END WaterSim-America style button -->  
 <%--            <input type="button" class="run-model" id="run-model-Main" name="run-model" value="Run Model"/>    --%>
      <!-- QUAY EDIT FOR NEW RUN BUTTON ------------------------->           
             <!-- DAS -- 07.10.14-->

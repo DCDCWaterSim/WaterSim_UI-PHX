@@ -1,5 +1,4 @@
-﻿
-//-- QUAY EDIT FOR NEW RUN BUTTON 12 18 14 ------------------------->           
+﻿//-- QUAY EDIT FOR NEW RUN BUTTON 12 18 14 ------------------------->           
 
 //function refreshBackgrounds(selector) {
 //    // Chrome shim to fix http://groups.google.com/a/chromium.org/group/chromium-bugs/browse_thread/thread/1b6a86d6d4cb8b04/739e937fa945a921
@@ -18,21 +17,21 @@
 //        });
 //    }
 //}
- 
 
 
-var ModelRunningImage = new Image(180, 30);
-ModelRunningImageSrc = "Images/Model Running.png";
-ModelRunningImage.src = ModelRunningImageSrc;
-var ModelWaitingImage = new Image(180, 30);
-ModelWaitingImageSrc = "Images/RunModelGrey.png";
-ModelWaitingImage.src = ModelWaitingImageSrc;
-var ModelReadyImage = new Image(180, 30);
-ModelReadyImageSrc = "Images/RunModelGreenGold.png";
-ModelReadyImage.src = ModelReadyImageSrc;
 
-var SliderDirty = false;
-var OldRunButtonImage;
+//var ModelRunningImage = new Image(180, 30);
+//ModelRunningImageSrc = "Images/Model Running.png";
+//ModelRunningImage.src = ModelRunningImageSrc;
+//var ModelWaitingImage = new Image(180, 30);
+//ModelWaitingImageSrc = "Images/RunModelGrey.png";
+//ModelWaitingImage.src = ModelWaitingImageSrc;
+//var ModelReadyImage = new Image(180, 30);
+//ModelReadyImageSrc = "Images/RunModelGreenGold.png";
+//ModelReadyImage.src = ModelReadyImageSrc;
+
+//var SliderDirty = false;
+//var OldRunButtonImage;
 
 //var Greens = new Array();
 ////Greens[0] = "#00AF00";
@@ -69,53 +68,78 @@ var OldRunButtonImage;
 //        test[1].style.background = Greens[BlinkIndex];
 //        BlinkIndex++;
 //        if (BlinkIndex == Greens.length) { BlinkCnt = 0; BlinkIndex = 0; }
- 
+
 //    }
 //}
+
+var RunningColor = "#FFA0A0";  // this is a light red
+var ReadyColor = "#40FF40";  // this is a bright green
+var WaitingColor = "lightgrey";
+
+function HideRunButton() {
+    $("*.run-model").each(function () {
+        $(this).hide();
+    });
+}
+
+
 function SetRunButtonWaiting() {
     $("*.run-model").each(function () {
-  //      $(this).find('img').attr('src', ModelReadyImageSrc);
-
-        this.src = ModelReadyImageSrc;
-        //var mss = this.style;
-        //this.style.backgroundColor = Greens[0];
-        //this.style.backgroundImage = "none !important";
-        ////// for chrome and firefox
-        //this.style['background-color'] = Greens[0];
-        //if (isDoBlink) {
-        //    BlinkTimer = setInterval(function () { BlinkRun(); }, 50);
-        //}
-        //var spinner = document.getElementById('spinnerImg').style.display = "";
-
-     });
-
-  //   refreshBackgrounds("*.run-model");
+        this.style.backgroundColor = ReadyColor;
+    });
 }
 
+
+//    $("*.run-model").each(function () {
+//  //      $(this).find('img').attr('src', ModelReadyImageSrc);
+
+//        this.src = ModelReadyImageSrc;
+//        //var mss = this.style;
+//        //this.style.backgroundColor = Greens[0];
+//        //this.style.backgroundImage = "none !important";
+//        ////// for chrome and firefox
+//        //this.style['background-color'] = Greens[0];
+//        //if (isDoBlink) {
+//        //    BlinkTimer = setInterval(function () { BlinkRun(); }, 50);
+//        //}
+//        //var spinner = document.getElementById('spinnerImg').style.display = "";
+
+//     });
+
+//  //   refreshBackgrounds("*.run-model");
+//}
 
 function SetRunButtonDone() {
-    //if (isDoBlink) {
-    //    clearInterval(BlinkTimer);
-    //}
     $("*.run-model").each(function () {
-
-        this.src = ModelWaitingImageSrc;
-
-        //this.style.backgroundImage = "";
-        //this.style.backgroundColor = 0x990000;
-        //this.style.background = 0x990000;
+        this.style.backgroundColor = WaitingColor;
     });
-    //var spinner = document.getElementById('spinnerImg').style.display = "none";
 }
+////if (isDoBlink) {
+//    //    clearInterval(BlinkTimer);
+//    //}
+//    $("*.run-model").each(function () {
+
+//        this.src = ModelWaitingImageSrc;
+
+//        //this.style.backgroundImage = "";
+//        //this.style.backgroundColor = 0x990000;
+//        //this.style.background = 0x990000;
+//    });
+//    //var spinner = document.getElementById('spinnerImg').style.display = "none";
+//}
 
 function SetRunButtonRunning() {
     $("*.run-model").each(function () {
-        $(this).find('img').attr('src', ModelRunningImageSrc);
-        
-        //        this.src = ModelRunningImageSrc;
-
+        this.style.backgroundColor = RunningColor;
     });
 }
+//$("*.run-model").each(function () {
+//        $(this).find('img').attr('src', ModelRunningImageSrc);
+
+//                this.src = ModelRunningImageSrc;
+
+//    });
+//}
 
 //=============================================================================
 function SetRunButtonState(isSliderDirty) {
@@ -125,15 +149,15 @@ function SetRunButtonState(isSliderDirty) {
     else
     {
 
-    if (isSliderDirty) {
-        if (!SliderDirty) { SetRunButtonWaiting(); SliderDirty = true; }
-        // else do nothing, already dirty
-    } else 
+        if (isSliderDirty) {
+            if (!SliderDirty) { SetRunButtonWaiting(); SliderDirty = true; }
+            // else do nothing, already dirty
+        } else
             SetRunButtonRunning(); SliderDirty = false;
-            // already off do nothing
+        // already off do nothing
     }
 }
-   
+
 
 var TraceDirty = false;
 
