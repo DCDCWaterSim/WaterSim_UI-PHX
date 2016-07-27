@@ -41,6 +41,12 @@ function API(theVersion) {
 function Model(theVersion) {
     $("#Model").html(theVersion);
 }
+
+//Remove inforequest from the body of the page
+function remove_hvJSONData() {
+    $('#hvJSONData').remove();
+}
+
 // ---------------------------------------------------------
 //getting inforequest json data
 
@@ -53,7 +59,165 @@ if (getWindowType() != 'Charts') {
         localStorage.actvScenario = "Base";
         localStorage.scenarioList = "";
     }
+
+    //STEPTOE EDIT BEGIN 07/26/16 City Selection
+    //Remove initial json information from html page 
+    remove_hvJSONData();
+
+    var providerInfo = {};
+    var providersAdded = false;
+    //store all available providers and their codes 
+    function setupProviderInfo() {
+        var options = $('.chosen-select option');
+
+        for (var i in options) {
+            providerInfo[options[i].value] = options[i].text;
+        }
+    }
+    setupProviderInfo();
+    //STEPTOE EDIT END 07/26/16 City Selection
 }
+
+//STEPTOE EDIT BEGIN 07/26/16 City Selection
+//Enable/Disable the 'Load Selected Providers' button
+function toggleLoadProviders(condition) {
+    if (!$('#loadProviders').prop('disabled') || condition) {
+        $('#loadProviders').switchClass("button-no-hover-active", "button-no-hover");
+        $('#loadProviders').prop('disabled', true);
+    }
+    else {
+        $('#loadProviders').switchClass("button-no-hover", "button-no-hover-active");
+        $('#loadProviders').prop('disabled', false);
+    }
+}
+//Update Geography options on all charts
+function updateGeographyOptions() {
+    var providers = $('.chosen-select').chosen().val();
+
+    //Get the current selected provider for each chart
+    var selectedOptions = $(".ddlflds option:selected"),
+    valArray = [];
+    for (var i = 0; i < selectedOptions.length; i++) {
+        valArray.push(selectedOptions[i].value);
+    }
+
+    //Remove all providers from each chart and set them to the proivders
+    //recieved
+    $(".ddlflds").html('');
+    for (var i in providers) {
+        $('.ddlflds')
+            .append($("<option></option>")
+            .attr("value", providers[i])
+            .text(providerInfo[providers[i]]));
+    }
+
+    //Set the selected proivder to the previous selection if available
+    //for each chart
+    for (var i = 0; i < valArray.length; i++) {
+        $('.ddlflds')[i].value = valArray[i];
+
+        if ($('.ddlflds')[i].value == "") {
+            $('.ddlflds')[i].value = $('.ddlflds')[i].options[0].value;
+        }
+    }
+}
+
+//If the page is not Charts.aspx then setup the Chosen-JS Selector
+//and the 'Load Selected Providers' button
+if (getWindowType() != 'Charts') {
+    $(document).ready(function () {
+        //Initialize selector to be a Chosen selector
+        $('.chosen-select').chosen({
+            width: "100%",
+            max_selected_options: 6
+        });
+
+        //When the selecter's values change enable the 'Load Selected Providers' button
+        //if there are providers available.
+        //Option: #1 or #2 provide the ability to update the provider list for each chart
+        //as changes to the selector occur
+        $('.chosen-select').chosen().change(function (evt, params) {
+            var providers = $(this).chosen().val();
+
+            //Use this code segment to update the provider lists as the selects and deselects
+            for (var i in params) {
+                if (i == 'selected') {
+                    //#1 Uncomment here to add new provider to charts as they are selected
+                    // $('.ddlflds')
+                    //.append($("<option></option>")
+                    //.attr("value", params[i])
+                    //.text(providerInfo[params[i]]));
+                    //providersAdded = true;
+                }
+                else if (providers != null && providers.length > 0) {
+                    //#1 Uncommenting two sections below allows for list to be updated on removal of providers
+                    //However does not handle the case of there being no providers left that there is data for
+                    //$(".ddlflds option[value='" + params[i] + "']").remove();
+
+                    //looping through the output controls and getting the required data and populating the charts
+                    //$('.OutputControl').each(function () {
+
+                    //    var controlID = $(this).attr('id');
+                    //    var type = $("#" + controlID).attr("data-Type");
+
+                    //    if (type == "MFOP") {
+                    //        drawChart(controlID);
+                    //    }
+                    //});
+
+                }
+                else {
+                    $(".ddlflds option[value='" + params[i] + "']").remove();
+                    toggleLoadProviders(true);
+                }
+            }
+
+            //#2 Uncomment this section to clear selectors and readd all providers
+            //as changes are made to the selector.
+            //$(".ddlflds").html('');
+            //for (var i in providers) {
+            //    $('.ddlflds')
+            //        .append($("<option></option>")
+            //        .attr("value", providers[i])
+            //        .text(providerInfo[providers[i]]));
+            //}
+
+            //If there are proivders selected and the 'Load Selected Providers' button is disabled
+            //then enable the button
+            if (providers != null && $('#loadProviders').prop('disabled')) {
+                toggleLoadProviders();
+            }
+        });
+
+        //When 'Load Selected Providers' button is clicked setup each chart's selector,
+        //disable the load button, and then run the model
+        $('#loadProviders').click(function () {
+            //Update dropdowns
+            updateGeographyOptions();
+
+            //'Load Selected Providers' button and then run the model
+            toggleLoadProviders();
+            runModel();
+
+            //This call would keep system from running the model
+            //when only proivder deletion occurs and no adds
+            /*if (providersAdded) {
+                providersAdded = false;
+                runModel();
+            }
+            else {
+                sendSelectedProvidersChange();
+
+                //Need to update some draw charts code to properly use providerName
+                //For this call to update all chart versions
+                //Known Issue: drawDrillDownPieColumnChartMP
+                //drawOutputCharts(Com.data);
+            }*/
+        });
+    });
+}
+// STEPTOE EDIT END 07/26/16 City Selection
+
 
 // Set up Scenario Buttons
 
@@ -397,9 +561,67 @@ $(document).on('change', 'input[name="temporal"]', function () {
     drawAllIndicators();
 });
 
+//STEPTOE BEGIN EDIT 07/26/16 City Selection
 //Raising "Run Model" button click event and calling web service
-$(document).on('click', '.run-model', function () {
+//$(document).on('click', '.run-model', function () {
 
+//    var subControls;
+//    var sum = 0;// to hold the sum if the sub controls value
+//    var subControlsValid;
+
+//    if ($(this).attr('id') == 'run-model-Pop') {
+
+//        //getting the sub contrls values and adding them
+//        /*$('.InputControl').each(function () {
+
+//            if ($(this).attr("data-Subs") != "") {
+
+//                subControls = $(this).attr("data-Subs").split(',');
+
+//                $.each(subControls, function () {
+//                    sum = sum + parseInt($('#' + this + '_lblSliderVal').html());
+//                });
+
+//                if (sum != 100) {
+//                    subControlsValid = false;
+//                }
+//                else
+//                    subControlsValid = true;
+//            }
+//        });*/
+//        subControlsValid = true;
+
+//        //if sum of sub controls is not equal to 100
+//        if (!subControlsValid) {
+//            alert("Please Ensure that the sum of sub controls is 100");
+//        }
+
+//        else {
+//            $('div[id*=panelDependents]').dialog("close");
+
+//            //hiding all sub controls
+//            jsonStr = JSON.parse(infoRequestJSON);
+
+//            $.each(jsonStr.FieldInfo, function () {
+//                if (this.DEP != "") {
+//                    $.each(this.DEP, function () {
+//                        $('#' + this + "_ControlContainer").attr("style", "display:none");
+//                    });
+//                }
+//            });
+//            callWebService(getJSONData('DEP'));
+//        }
+//    }
+//    else
+//        callWebService(getJSONData('parent'));
+
+//});
+
+//Raising "Run Model" button click event and calling web service
+$(document).on('click', '.run-model', runModel);
+
+//Moved process executed when run model is clicked to a function
+function runModel() {
     var subControls;
     var sum = 0;// to hold the sum if the sub controls value
     var subControlsValid;
@@ -408,15 +630,15 @@ $(document).on('click', '.run-model', function () {
 
         //getting the sub contrls values and adding them
         /*$('.InputControl').each(function () {
-
+        
             if ($(this).attr("data-Subs") != "") {
-
+        
                 subControls = $(this).attr("data-Subs").split(',');
-
+        
                 $.each(subControls, function () {
                     sum = sum + parseInt($('#' + this + '_lblSliderVal').html());
                 });
-
+        
                 if (sum != 100) {
                     subControlsValid = false;
                 }
@@ -450,7 +672,8 @@ $(document).on('click', '.run-model', function () {
     else
         callWebService(getJSONData('parent'));
 
-});
+}
+//STEPTOE END EDIT 07/26/16 City Selection
 
 //Toggling the sub controls
 $(document).on('click', '.ui-slider-popup-button', function () {
@@ -517,7 +740,7 @@ $(document).on('click', '.trace-CO', function () {
 //})();
 
 //setting Provider check boxes
-function setProviderCheckBoxes() {
+function setProviderCheckBoxes(initial) {
 
     var jsonstr = JSON.parse(localStorage[localStorage.actvScenario]);
     var jsonOutputs = JSON.parse(jsonstr.outputJsonArray);
@@ -527,15 +750,27 @@ function setProviderCheckBoxes() {
         prvdrs[this] = true;
     });
 
-    $('input[name="geography"]').each(function () {
+    //STEPTOE EDIT BEGIN 07/26/16 City Selection
+    //$('input[name="geography"]').each(function () {
 
-        if (prvdrs[$(this).attr("id")]) {
-            $(this).prop("checked", true);
-        }
-        else {
-            $(this).prop("checked", false);
-        }
-    });
+    //    if (prvdrs[$(this).attr("id")]) {
+    //        $(this).prop("checked", true);
+    //    }
+    //    else {
+    //        $(this).prop("checked", false);
+    //    }
+    //});
+
+    //Update chosen select with initial values from the model
+    var chosenSelect = $('.chosen-select');
+    chosenSelect.val(jsonOutputs.Providers);
+    chosenSelect.trigger('chosen:updated');
+
+    //Only update geography options if it is not the inital page load
+    if (!initial) {
+        updateGeographyOptions();
+    }
+    //STEPTOE EDIT END 07/26/16 City Selection
 }
 
 
@@ -1142,9 +1377,17 @@ function getJSONData(inputType) {
     //getting providers
     var providers = [];
 
-    $('input[name="geography"]').each(function () {
-        providers.push(this.value);
-    });
+    //STEPTOE EDIT BEGIN 07/26/16 City Selection
+    //$('input[name="geography"]').each(function () {
+    //    providers.push(this.value);
+    //});
+    //If chosen is not empty then use the selected providers as input
+    //otherwise use the default values
+    if ($('.chosen-select').val() != null)
+        providers = $('.chosen-select').val();
+    else
+        providers = ["reg", "bu", "ch", "gi", "ph", "sc"];
+    //STEPTOE EDIT END 07/26/16 City Selection
 
     outputData["Providers"] = providers;
 
@@ -1282,10 +1525,25 @@ function drawOutputCharts(outputJSON) {
 
     });
 
+    //STEPTOE EDIT BEGIN 07/26/16 City Selection
     //getting provider names w.r.to their code
-    $('input[name="geography"]').each(function () {
-        providerName[this.value] = $(this).next('label').html();
-    });
+    //$('input[name="geography"]').each(function () {
+    //    providerName[this.value] = $(this).next('label').html();
+    //});
+
+    //If the window is not Charts.aspx then get provider names w.r. to their code
+    //from the Chosen Selector
+    if (getWindowType() != "Charts") {
+        var selectedProviders = $('.chosen-select').val();
+        for (var i in selectedProviders)
+            providerName[selectedProviders[i]] = providerInfo[selectedProviders[i]];
+    }
+        //Otherwise page is Charts.aspx, get provider info from providerInfo
+    else {
+        for (var i in providerInfo)
+            providerName[i] = providerInfo[i];
+    }
+    //STEPTOE EDIT END 07/26/16 City Selection
 
 
     $jsonObj = JSON.parse(jsondata);
@@ -1393,9 +1651,16 @@ function drawChart(controlID) {
         case "MFOP":
             // Add providers to drop down
             if ($("#" + controlID).find("select[id*=ddlfld]").find("option").length == 0) {
-                $('input[name="geography"]').each(function () {
-                    $("#" + controlID).find("select[id*=ddlfld]").append(new Option($(this).next('label').html(), this.value));
-                });
+                //STEPTOE EDIT BEGIN 07/26/16 City Selection
+                //$('input[name="geography"]').each(function () {
+                //    $("#" + controlID).find("select[id*=ddlfld]").append(new Option($(this).next('label').html(), this.value));
+                //});
+
+                //Get available providers from Chosen Selector instead of geography control
+                var selectedProviders = $('.chosen-select').val();
+                for (var i in selectedProviders)
+                    $("#" + controlID).find("select[id*=ddlfld]").append(new Option(providerInfo[selectedProviders[i]], selectedProviders[i]));
+                //STEPTOE EDIT END 07/26/16 City Selection
             }
             if (strtYr == endYr) {
                 // ok point in time show the graph types drop down
@@ -1507,7 +1772,7 @@ function getWindowType() {
         setSliderValues();
 
         //checking the provider list check boxes
-        setProviderCheckBoxes();
+        setProviderCheckBoxes(true);
 
         initializeIndicators();
 

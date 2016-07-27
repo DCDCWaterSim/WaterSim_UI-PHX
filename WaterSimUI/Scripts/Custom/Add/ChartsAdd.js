@@ -1,4 +1,4 @@
-/// <reference path="/Scripts/Custom/Core.js" />
+/// <reference path="../Core/Core.js" />
 
 //Current state of chart type checkbox
 var checkBoxValues = {
@@ -78,14 +78,15 @@ var callWebServFailString = 'callWebService Failure';
 var temporalRadioChangeString = 'temporal radio change';
 var geographyRadioChangeString = 'geography radio change';
 var loadingString = 'loading';
+var selectedProvidersChangeString = 'selected providers change';
 
 //Communication data container
 var Com = {
-    connection: false,
-    windowType: 'Charts',
-    masterWindow: '',
-    masterWindowPath: '',
-    id: -1
+    connection: false,      //Is the window connected to the master?
+    windowType: 'Charts',   //The type of window this is
+    masterWindow: '',       //The type of the Master window
+    masterWindowPath: '',   //The Master window's path
+    id: -1                  //Unique ID assigned to the window by the Master for communication
 }
 //Adds window event handler to recieve messages from other windows
 //Once the connection is established it'll remove the loading screen
@@ -128,6 +129,9 @@ function communication() {
                     else if (data.message == loadingString) {
                         recieveLoading();
                     }
+                    else if (data.message == selectedProvidersChangeString) {
+                        recieveSelectedProvidersChange(data);
+                    }
                 }
             }
         } catch (e) {
@@ -148,6 +152,40 @@ function callWebServiceCharts(testData) {
         Com.masterWindow.postMessage(JSON.stringify(data), Com.masterWindowPath);
     }
 }
+//Updating the selector with new providers for each chart
+function updateProviders(data) {
+    //If providerInfo is different than repopulate selector for each chart
+    if (JSON.stringify(providerInfo) !== data.providerInfo) {
+        try {
+            //Parse the provider information and get the current selected provider
+            //for each chart
+            providerInfo = JSON.parse(data.providerInfo);
+            var selectedOptions = $(".ddlflds option:selected"),
+            valArray = [];
+            for (var i = 0; i < selectedOptions.length; i++) {
+                valArray.push(selectedOptions[i].value);
+            }
+
+            //Remove all providers from each chart and set them to the proivders
+            //recieved
+            $(".ddlflds").html('');
+            for (var i in providerInfo) {
+                $('.ddlflds')
+                    .append($("<option></option>")
+                    .attr("value", i)
+                    .text(providerInfo[i]));
+            }
+
+            //Set the selected proivder to the previous selection if available
+            //for each chart
+            for (var i = 0; i < valArray.length; i++) {
+                $('.ddlflds')[i].value = valArray[i];
+            }
+        } catch (e) {
+            console.log("updateProviders", providerInfo)
+        }
+    }
+}
 //Updating the strtYr and endYr to match Default.aspx
 function updateStrtYrEndYr(data) {
     strtYr = parseInt(data.strtYr);
@@ -158,11 +196,16 @@ function updateStrtYrEndYr(data) {
 function recieveRequestedData(data) {
     infoRequestJSON = data.infoRequestJSON;
 
+    // STEPTOE EDIT BEGIN 07/26/16 City Selection
+    updateProviders(data);
+    // STEPTOE EDIT END 07/26/16 City Selection
+
     //Updating the strtYr and endYr to match Default.aspx
     updateStrtYrEndYr(data);
 
+    // STEPTOE EDIT BEGIN 07/26/16 City Selection
     //looping through the output controls to set the provider
-    if ((typeof (data.provider) != "undefined")) {
+    /*if ((typeof (data.provider) != "undefined")) {
         $('.OutputControl').each(function () {
 
             var controlID = $(this).attr('id');
@@ -172,7 +215,8 @@ function recieveRequestedData(data) {
                 $("#" + controlID).find("select[id*=ddlfld]").val(data.provider);
             }
         });
-    }
+    }*/
+    // STEPTOE EDIT END 07/26/16 City Selection
 
     drawOutputCharts(data.testData);
 }
@@ -200,9 +244,20 @@ function recieveGeographyRadioChange(data) {
         }
     });
 }
+//Selected Providers Changed update charts
+function recieveSelectedProvidersChange(data) {
+    updateProviders(data);
+
+    //looping through the output controls to populate the charts
+    $('.OutputControl').each(function () {
+        var controlID = $(this).attr('id');
+        drawChart(controlID);
+    });
+}
 //Model Successful ran and returned new data
 function recieveWebServSuccess(data) {
     //$("#WSLoading").hide();
+    updateProviders(data);
     drawOutputCharts(data.testData);
 }
 //Model is about to run show loading screen

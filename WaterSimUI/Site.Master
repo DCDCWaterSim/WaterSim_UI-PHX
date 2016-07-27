@@ -12,6 +12,10 @@
     </asp:PlaceHolder>  
     <webopt:BundleReference runat="server" Path="~/Content/css" /> 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <%-- STEPTOE EDIT BEGIN 11/08/15: Added Chosen --%>
+    <link href="Scripts/Chosen/chosen.css" rel="stylesheet" >
+    <%-- STEPTOE EDIT END --%>
+
      <%-- SITE EDIT BEGIN--%>
     <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
    <%-- <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />--%>
@@ -88,6 +92,11 @@
         -->
     <script src="Scripts/jquery-2.1.0.js"></script>
     <script src="Scripts/jquery-ui-1.10.4.js"></script>
+
+    <%-- STEPTOE EDIT BEGIN 11/08/15: Added chosen --%>
+    <script src="Scripts/Chosen/chosen.jquery.js"></script>
+    <script src="Scripts/Chosen/docsupport/prism.js" type="text/javascript"></script>
+    <%-- STEPTOE EDIT END --%>
 
     <script src="Scripts/msAccordion.js"></script> 
     <script src="Scripts/Custom/jquery.zaccordion.js"></script>
@@ -331,14 +340,60 @@
                 </div>
 
                 <div id="settings-tabs-geography-2">
-                    <ul id="providersList">
+                    <%--<ul id="providersList">
                         <li><input type="radio" name="geography" value="reg" data-related-item="geography-regional"/><label id="reg">Regional</label></li>
                         <li><input type="radio" name="geography" value="bu" data-related-item="geography-regional"/><label id="bu">Buckeye</label></li>
                         <li><input type="radio" name="geography" value="ch" data-related-item="geography-regional"/><label id="ch">Chandler</label></li>
                         <li><input type="radio" name="geography" value="gi" data-related-item="geography-regional"/><label id="gi">Gilbert</label></li>
                         <li><input type="radio" name="geography" value="ph" data-related-item="geography-regional"/><label id="ph">Phoenix</label></li>
                         <li><input type="radio" name="geography" value="sc" data-related-item="geography-regional"/><label id="sc">Scottsdale</label></li>
-                    </ul>
+                    </ul>--%>
+                    <h3 style="float:left">Select Provider(s):</h3><div id="PROVIDERHelpControlContainer" class="help" style="float:right" data-key="LPROVIDERS"><img style="" src="../Images/icon_help.png" /> </div>
+                    <select id="providersListChosen" class="chosen-select" multiple style="width:200px;">
+                        <option value="reg" data-related-item="geography-regional">Regional</option>
+							<optgroup  label="North Valley">
+                                <option value="cf" data-related-item="geography-regional">Carefree</option>
+                                <option value="cc" data-related-item="geography-regional">Cave Creek</option>
+                                <option value="cp" data-related-item="geography-regional">Chaparral City</option>
+                                <option value="dh" data-related-item="geography-regional">Desert Hills</option>
+                                <option value="rv" data-related-item="geography-regional">Rio Verde</option>                                
+                            </optgroup>
+                            <optgroup  label="Central Valley">                                
+                                <option value="be" data-related-item="geography-regional">Berneil</option>
+                                <option value="pv" data-related-item="geography-regional">Paradise Valley</option>
+                                <option value="ph" data-related-item="geography-regional">Phoenix</option>
+                                <option value="sc" data-related-item="geography-regional">Scottsdale</option>
+                            </optgroup>
+                            <optgroup  label="East Valley">
+                                <option value="ch" data-related-item="geography-regional">Chandler</option>
+                                <option value="gi" data-related-item="geography-regional">Gilbert</option>                                
+                                <option value="me" data-related-item="geography-regional">Mesa</option>
+                                <option value="qk" data-related-item="geography-regional">Queen Creek</option>
+                                <option value="te" data-related-item="geography-regional">Tempe</option>
+                            </optgroup>
+                            <optgroup  label="West Valley">
+                                <option value="ad" data-related-item="geography-regional">Adaman Mutual</option>
+                                <option value="av" data-related-item="geography-regional">Avondale</option>
+                                <option value="bu" data-related-item="geography-regional">Buckeye</option>
+                                <option value="cu" data-related-item="geography-regional">Clearwater Utilities</option>
+                                <option value="em" data-related-item="geography-regional">El-Mirage</option>
+                                <option value="gl" data-related-item="geography-regional">Glendale</option>
+                                <option value="go" data-related-item="geography-regional">Goodyear</option>
+                                <option value="lp" data-related-item="geography-regional">Litchfield Park</option>
+                                <option value="pe" data-related-item="geography-regional">Peoria</option>
+                                <option value="rg" data-related-item="geography-regional">Rigby</option>
+                                <option value="ry" data-related-item="geography-regional">Rose Valley</option>
+                                <option value="su" data-related-item="geography-regional">Sun City</option>
+                                <option value="sw" data-related-item="geography-regional">Sun City West</option>
+                                <option value="sr" data-related-item="geography-regional">Sunrise</option>
+                                <option value="sp" data-related-item="geography-regional">Surprise</option>
+                                <option value="to" data-related-item="geography-regional">Tolleson</option>
+                                <option value="vu" data-related-item="geography-regional">Valley Utilities</option>
+                                <option value="we" data-related-item="geography-regional">West End</option>
+                                <option value="wt" data-related-item="geography-regional">White Tanks</option>
+                            </optgroup>
+                    </select>                 
+                    <input type="button" id="loadProviders" class="button-no-hover" name="providers-button" value="Load Selected Providers" style="width:100%"  disabled/>
                 </div>
                 </div>
                 <div>

@@ -222,10 +222,25 @@ var callWebServFailString = 'callWebService Failure';
 var temporalRadioChangeString = 'temporal radio change';
 var geographyRadioChangeString = 'geography radio change';
 var loadingString = 'loading';
+var selectedProvidersChangeString = 'selected providers change';
 
+//Get Selected Providers to pass to Charts.aspx
+function getSelectedProviders() {
+    var selectedProviders = $('.chosen-select').val(),
+        providers = {};
+    for (var i in selectedProviders)
+        providers[selectedProviders[i]] = providerInfo[selectedProviders[i]];
+
+    return JSON.stringify(providers)
+}
 //Get Window's path to open Charts.aspx
 function getPath() {
     var path = window.location.href;
+    // Remove login parameter from path
+    if (path.indexOf("?login") > -1) {
+        path = path.substr(0, path.indexOf("?login"));
+    }
+    // Remove webpage from path
     if (path.indexOf("Default.aspx") > -1) {
         path = path.replace("Default.aspx", "");
     }
@@ -331,7 +346,8 @@ function sendRequestedData(source, sourcePath) {
         infoRequestJSON: infoRequestJSON,
         strtYr: strtYr,
         endYr: endYr,
-        provider: Com.provider
+        provider: Com.provider,
+        providerInfo: getSelectedProviders()
     }
     source.postMessage(JSON.stringify(data), sourcePath);
 }
@@ -343,6 +359,7 @@ function sendWebServData(testData) {
         source: Com.windowType,
         message: callWebServSuccessString,
         testData: testData,
+        providerInfo: getSelectedProviders()
     }
     for (var i = 0; i < Com.chartWindow.length; i++)
         Com.chartWindow[i].postMessage(JSON.stringify(data), Com.chartWindowPath);
@@ -381,6 +398,16 @@ function sendLoading() {
     //}
     //for (var i = 0; i < Com.chartWindow.length; i++)
     //    Com.chartWindow[i].postMessage(JSON.stringify(data), Com.chartWindowPath);
+}
+//Send Selected Providers Change to all windows, called when the provider selection has changed
+function sendSelectedProvidersChange() {
+    var data = {
+        source: Com.windowType,
+        message: selectedProvidersChangeString,
+        providerInfo: getSelectedProviders()
+    }
+    for (var i = 0; i < Com.chartWindow.length; i++)
+        Com.chartWindow[i].postMessage(JSON.stringify(data), Com.chartWindowPath);
 }
 //Enable Communication
 communication();
