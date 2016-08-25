@@ -164,10 +164,15 @@ $(document).ready(function () {
     });
 
     // STEPTOE EDIT 07/25/16
-    // 1) Make geography tab active
-    // 2) Hide Temporal tab button
-    $('[aria-controls="settings-tabs-geography-2"] a').click();
-    $('[aria-controls="settings-tabs-geography-1"]').hide();
+
+    // Make geography tab active
+    //$('[aria-controls="settings-tabs-geography-2"] a').click();
+
+    // Hide Temporal tab button
+    //$('[aria-controls="settings-tabs-geography-1"]').hide();
+
+    // Hide 'Point-in-time' Temporal control
+    $('#settings-tabs-geography-1 h3').first().hide();
 
     var login = $.urlParam('login');
     if (login != null) {

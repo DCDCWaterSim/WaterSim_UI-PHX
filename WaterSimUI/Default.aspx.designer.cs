@@ -31,22 +31,13 @@ namespace WaterSimUI {
         protected global::WaterSimUI.UserControls.InputUserControl InputUserControl2;
         
         /// <summary>
-        /// DroughtControlCO control.
+        /// InputUserControl3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WaterSimUI.UserControls.InputUserControl DroughtControlCO;
-        
-        /// <summary>
-        /// DroughtControlSTV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WaterSimUI.UserControls.InputUserControl DroughtControlSTV;
+        protected global::WaterSimUI.UserControls.InputUserControl InputUserControl3;
         
         /// <summary>
         /// OutputControl1 control.
@@ -173,23 +164,5 @@ namespace WaterSimUI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WaterSimUI.UserControls.OutputUserControl OutputControl18;
-        
-        /// <summary>
-        /// OutputControl14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WaterSimUI.UserControls.OutputUserControl OutputControl14;
-        
-        /// <summary>
-        /// OutputContro15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WaterSimUI.UserControls.OutputUserControl OutputContro15;
     }
 }

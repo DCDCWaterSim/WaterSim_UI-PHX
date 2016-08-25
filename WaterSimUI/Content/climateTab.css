@@ -8,11 +8,13 @@ The climate factor controls on the Climate/River Flows Tab
 }
 #climateTab {
     position: absolute;
-    top: 40px;
+    /*top: 40px;*/
     left:7px;
     /*height: auto;*/
-    height: 180px;
-    width: 275px;
+    /*height: 180px;*/
+    height: 200px;
+    /*width: 275px;*/
+    width: 290px;
     
     padding: 10px;
     
@@ -52,12 +54,16 @@ The climate factor controls on the Climate/River Flows Tab
 /* -------------------------------------------------------------------------------*/
 #droughtTab {
     position: absolute;
-    top: 40px;
-    /*left:585px;*/
+    /*STEPTOE EDIT BEGIN 08/18/16*/
+    /*top: 40px;*/
+    /*left: 7px;*/
     left: 7px;
+    top: 235px;
+    /*STEPTOE EDIT END 08/18/16*/
 
-    height: 325px; /*275px;*/
-    width: 275px; 
+    height: 100px; /*275px;*/
+    /*width: 275px;*/
+    width: 290px; 
     padding: 10px;
     
     background-color: #e6e6e6;
@@ -66,7 +72,6 @@ The climate factor controls on the Climate/River Flows Tab
     -webkit-box-shadow: 0 0 5px 5px #000000;
     -moz-box-shadow: 0 0 5px 5px #000000;
     box-shadow: 0 0 5px 5px #000000;
-    
 }
 #droughtTab-button-container {
   
@@ -94,11 +99,13 @@ The climate factor controls on the Climate/River Flows Tab
 #droughtStartStop {
     background-color: #E6E6E6 !important;
     position: absolute;
-    top: 225px;
+    /*top: 225px;*/
+    top: 185px;
     /*height: 40px;*/
     height: 120px;
     /*left:591px;*/
-    left: 7px;
+    /*left: 7px;*/
+    left: 623px;
     width: 275px;
     font-family: "Times New Roman", Times, serif; 
     font-size: 17px;  
@@ -111,7 +118,8 @@ The climate factor controls on the Climate/River Flows Tab
  }
  /* This is the redline area where start and stop are entered*/
  #droughtStartStop {
-   left: 25px;
+   /*left: 25px;*/
+   left: 641px;
    width: 255px;
    height: 148px;
   border: 1px solid #990033 !important;
@@ -123,12 +131,16 @@ River flow images
 #Image_container {
     position: absolute;
     left: 310px;
-    left: 325px;
-    top: 40px;
+    left: 340px;
+    /*top: 40px;*/
+    top: 125px;
     
     height: auto;
-    width: 260px;
-    padding: 3px;
+    /*width: 260px;*/
+    width: 275px;
+
+    /*padding: 3px;*/
+    padding: 3px 10px;
     background-color: #e6e6e6;
     color: #555;
    
@@ -139,12 +151,21 @@ River flow images
     box-shadow: 0 0 5px 5px #000000;
     
 }
+/*#Image_container img{
+    height: 230px;
+    width: 100%;
+}*/
 /* THis has the radio buttons for the four start years for the rivers */
 #riverTab {
     position: absolute;
-    left: 7px;
-    top: 251px;
-    
+
+    /*STEPTOE EDIT BEGIN 08/18/16*/
+    /*left: 7px;*/
+    /*top: 251px;*/
+    left: 340px;
+    top: 0px;
+    /*STEPTOE EDIT END 08/18/16*/
+
     height: auto;
     width: 275px;
     padding: 10px;
@@ -159,24 +180,35 @@ River flow images
 
 /* Contains the red border for the riverTab div */
 #FlowRecord {
-    border: 1px solid #990033 !important;
-     text-align:left;    
+    /*border: 1px solid #990033 !important;*/
+     text-align:left;
+}
+#flowRecordList {
+    /*background-color: #e6e6e6 !important;*/
+    width: calc(100% - 29px);
+    font-weight:bold;
+    margin-top: 32px;
 }
 
 /* this is the div for the trace start years */
 #startYear {
     position: absolute;
-    left: 312px;
-    left: 325px;
-    top: 373px;
+    /*left: 312px;*/
+    left: 7px;
+    /*top: 373px;*/
+    top: 370px;
     
     height: auto;
-    width: 255px;
+
+    /*width: 255px;*/
+    /*width: 285px;*/
+    width: 300px;
+
     padding: 5px;
     background-color: #e6e6e6;
     color: #555;
    
-     text-align:left;
+     text-align:center;
     
     -webkit-box-shadow: 0 0 5px 5px #000000;
     -moz-box-shadow: 0 0 5px 5px #000000;

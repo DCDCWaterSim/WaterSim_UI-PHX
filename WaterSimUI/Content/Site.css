@@ -117,7 +117,10 @@ h7 {
 	overflow: hidden;
 }
 .content {
-	padding: 0 0 0 305px;
+	/*padding: 0 0 0 305px;*/
+    /*STEPTOE EDIT BEGIN 08/18/16*/
+    padding: 0 0 0 400px;
+    /*STEPTOE EDIT END 08/18/16*/
 }
 
 .main-content {
@@ -133,10 +136,14 @@ h7 {
   float: left;
   margin-left: -100%;
   overflow: auto;
-  height: 510px;
-  height: 479px;
+  /*height: 510px;*/
+  /*height: 479px;*/
   position: relative;
-  width: 275px;
+  /*width: 275px;*/
+  /*STEPTOE EDIT BEGIN 08/18/16*/
+  width: 370px;
+  height: 495px;
+  /*STEPTOE EDIT END 08/18/16*/
   /* border-radius: 4px; */
   margin-bottom: 5px;
   padding: 10px;
@@ -175,7 +182,8 @@ h7 {
 .version{
     padding-left:2px;
     float: left;
-    font-size: 8px;
+    /*font-size: 8px;*/
+    font-size: 10px;
      margin-left: 10px;
      /*border-style:dashed;
       border-color:blue;
@@ -1334,4 +1342,71 @@ option {
     padding: 5px 0;
     position: absolute;
     transition: margin-left 0.25s linear 0s;
+}
+
+.radio-container {
+    position: relative;
+    margin-bottom: 15px;
+    margin-right: 0px !important;
+    /*margin-right: 10px;*/
+    margin-top: 15px;
+    /*height:50px;*/
+}
+.radio-container label.ui-button {
+    -webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(black), to(rgba(0, 0, 0, 0))) 1 100%; 
+    -webkit-border-image: -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%; 
+    -o-border-image: -o-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%; 
+    -moz-border-image: -moz-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top, #cccccc 0%, #999999 100%) !important;
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top, #cccccc 0%, #999999 100%) !important;
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #cccccc 0%, #999999 100%) !important;
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #cccccc), color-stop(1, #999999)) !important;
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top, #cccccc 0%, #999999 100%) !important;
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom, #cccccc 0%, # 100%) !important;
+    border: 1px solid #e5e5e5;
+    color: #FFFFFF !important;
+    /*
+    Minimum width determines the smallest size the buttonsets are allowed to be.
+    MTS 02.23.16
+        */
+    /*min-width: 23%;*/
+    /*height: height;*/
+    /*height: 45px;*/
+    /*text-align: center;*/
+}
+
+/*.radio-container label.ui-button:before{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}*/
+
+/*.radio-container label.ui-state-active{
+
+}*/
+
+.radio-container label.ui-state-active span{
+    color: #990033 !important;
+}
+
+.realclearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.input-number{
+    float:left;
+    width:60px !important;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
 }

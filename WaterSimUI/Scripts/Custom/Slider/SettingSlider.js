@@ -111,6 +111,10 @@ function setSlider() {
         SetSliderValue(divid, svalue);
         //       $('#' + id[0] + '_lblSliderVal').html($("#" + divid).slider("value"));
         //==================================
+
+        if (inputControlsConverted != "undefined" && inputControlsConverted) {
+            updateControlGroup(this, svalue);
+        }
     });
 
 
@@ -121,27 +125,64 @@ function setSlider() {
         max: 2050,
         slide: function (event, ui) {
             $("#point-in-time").html(ui.value);
+        },
+        stop: function (event, ui) {
+            temporalSliderChange("point-in-time");
         }
     });
     $("#point-in-time").html($("#point-in-time-slider").slider("value"));
 
     $("#range-in-time-slider").slider({
         range: true,
-        min: 2000,
-        max: 2050,
+        min: 2015,
+        max: 2085,
         values: [parseInt($("#range-in-time-slider").attr("data-strtyr")), parseInt($("#range-in-time-slider").attr("data-endyr"))],
         slide: function (event, ui) {
-            $("#range-in-time").html(ui.values[1] - ui.values[0]);
+            // STEPTOE EDIT 07/28/16 BEGIN RiT max range modification 
+            var range = ui.values[1] - ui.values[0];
+            var start = ui.values[0],
+                end = ui.values[1];
+
+            if (range > 40) {
+                range = 40;
+                if (ui.values[0] == this.startValues[0]) {
+                    start = end - range;
+                    this.startValues[0] = start;
+                    $("#range-in-time-slider").slider("values", 0, start);
+                    //console.log('updating the start: ' + start);
+                }
+                else {
+                    end = start + range;
+                    $("#range-in-time-slider").slider("values", 1, end);
+                    //console.log('updating the end: ' + end);
+                }
+            }
+
+            $("#range-in-time").html(range);
+            //console.log('range: ' + (end-start));
+
             // QUAY EDIT 3/13/14 begin
-             $("#range-in-time-slider").attr("data-strtyr", ui.values[0]);
-             $("#range-in-time-slider").attr("data-endyr", ui.values[1]);
+            $("#range-in-time-slider").attr("data-strtyr", start);
+            $("#range-in-time-slider").attr("data-endyr", end);
             // QUAY EDIT 3/13/14 end;
+            // STEPTOE EDIT 07/28/16 END
+        },
+        start: function (event, ui) {
+            // STEPTOE EDIT 07/28/16 BEGIN RiT max range modification 
+            this.startValues = [ui.values[0], ui.values[1]];
+            // STEPTOE EDIT 07/28/16 END
         },
         // QUAY EDIT 3/13/14 BEGIN
         stop: function (event, ui) {
             //$("#range-in-time-slider").attr("data-strtyr", ui.values[0]);
             //$("#range-in-time-slider").attr("data-endyr", ui.values[1]);
             //ui.value = ui.values[1];
+
+            // STEPTOE EDIT 07/28/16 BEGIN RiT max range modification
+            temporalSliderChange("range-in-time");
+            
+            delete this.startValues;
+            // STEPTOE EDIT 07/28/16 END
         },
         change: function () {
             //Time_Chart_Draw();

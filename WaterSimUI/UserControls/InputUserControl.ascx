@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InputUserControl.ascx.cs" Inherits="WaterSimUI.UserControls.InputUserControl" %>
 
 <div id="ControlContainer" runat="server" class="InputControl" data-key="" data-fld="" data-Subs="">
-    <asp:Label ID="lblSliderfldName" runat="server"></asp:Label> : <asp:Label runat="server" ID="lblSliderVal"></asp:Label> 
+    <asp:Label ID="lblSliderfldName" runat="server"></asp:Label> : <asp:Label runat="server" ID="lblSliderVal" style="display:none;"></asp:Label> 
         <asp:Label ID="lblunits" runat="server" Text="%"></asp:Label>
     <div runat="server" id="containerHelp" class="help">
         <asp:HiddenField ID="hvHelpURI" runat="server" />

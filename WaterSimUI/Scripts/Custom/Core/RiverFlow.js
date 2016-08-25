@@ -79,31 +79,37 @@ function SetFlowLabels()
 //-----------------------------------------------
 function SetFlowRadio(value) {
     switch (value) {
-
+        //STEPTOE EDIT BEGIN 08/24/16 - Changed RiverFlow from radio to dropdown
          case "dry":
-            $('input[id="RBdry"]').prop('checked', true);
+            //$('input[id="RBdry"]').prop('checked', true);
+             $('#flowRecordList').val('dry')
             SetFlowValues('dry');
             break;
         case "med":
-            $('input[id="RBmed"]').prop('checked', true);
+            //$('input[id="RBmed"]').prop('checked', true);
+            $('#flowRecordList').val('med')
             SetFlowValues('med');
             break;
         case "wet":
-            $('input[id="RBwet"]').prop('checked', true);
+            //$('input[id="RBwet"]').prop('checked', true);
+            $('#flowRecordList').val('wet')
             SetFlowValues('wet');
             break;
         case "mix":
-            $('input[id="RBmix"]').prop('checked', true);
+            //$('input[id="RBmix"]').prop('checked', true);
+            $('#flowRecordList').val('mix')
             SetFlowValues('mix');
             break;
         default:
-            $('input[id="RBdry"]').prop('checked', true);
+            //$('input[id="RBdry"]').prop('checked', true);
+            //'select[name=flowRecord]'
+            $('#flowRecordList').val('dry')
             SetFlowValues('dry');
             $('#img4').hide();
             $('#img1').hide();
             $('#img2').hide();
             $('#img3').hide();
-
+        //STEPTOE EDIT END 08/24/16
 
     }
 }
@@ -181,12 +187,15 @@ function SetSVFlow(val) {
     //}
 }
 //-----------------------------------------------
-$('input[name="flowRecord"]').change(function () {
+//STEPTOE EDIT BEGIN 08/24/16 - Changed RiverFlow from radio to dropdown
+//$('input[name="flowRecord"]').change(function () {
+$('#flowRecordList').change(function () {
     var flowValue = this.value;
     SetFlowValues(flowValue);
     SetFlowLabels();
     SetRunButtonState(true);
 })
+//STEPTOE EDIT END 08/24/16
 // ------------------------------------------------------------------------------------------------------------------------
 //
 

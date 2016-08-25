@@ -29,8 +29,17 @@
 // UI Version
 var WaterSimVersion = "UI: 22.7.1  ";
 var UI = WaterSimVersion.fontsize(1);
+var INFO_REQUEST;
+//function SetVersion(theVersion) {
+//    console.log('theVersion:', theVersion);
+//    $("#VersionInfo").html(theVersion);
+//}
 function SetVersion(theVersion) {
-    $("#VersionInfo").html(theVersion);
+    $("#UI").html(theVersion);
+
+}
+function SetWeb(theVersion) {
+    $("#Web").html(theVersion);
 
 }
 
@@ -222,7 +231,7 @@ if (getWindowType() != 'Charts') {
 // Set up Scenario Buttons
 
 // Save Screnario
-$(document).ready(function () {
+$(document).ready(function () {    
 
     //dialog box
     $("#dialog").dialog({
@@ -470,6 +479,7 @@ $(".ddlflds").change(function () {
 });
 
 
+/* STEPTOE EDIT 07/28/16 BEGIN RiT max range modification
 //drwaing charts on temporal slider(years) change
 $(document).on('mouseup', '.temporal', function (event) {
 
@@ -496,6 +506,21 @@ $(document).on('mouseup', '.temporal', function (event) {
 
     drawAllIndicators();
 });
+*/
+function temporalSliderChange(slider) {
+    if ($('input[name="temporal"]:checked').val() == slider) {
+        setStrtandEndYr();
+
+        //looping through the output controls and getting the required data and populating the charts
+        $('.OutputControl').each(function () {
+            var controlID = $(this).attr('id');
+            drawChart(controlID);
+        });
+
+        drawAllIndicators();
+    }
+}
+// STEPTOE EDIT 07/28/16 END
 
 // QUAY EDIT BEGIN 3/13/14 evening
 function Time_Chart_Draw() {
@@ -657,7 +682,10 @@ function runModel() {
             $('div[id*=panelDependents]').dialog("close");
 
             //hiding all sub controls
-            jsonStr = JSON.parse(infoRequestJSON);
+            // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
+            //jsonStr = JSON.parse(infoRequestJSON);
+            jsonStr = INFO_REQUEST;
+            // STEPTOE EDIT END 07/29/16
 
             $.each(jsonStr.FieldInfo, function () {
                 if (this.DEP != "") {
@@ -818,7 +846,10 @@ function setSliderValues() {
         // ======END QUAY EDIT
 
         //parsing the json
-        jsonStr = JSON.parse(infoRequestJSON);
+        // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
+        //jsonStr = JSON.parse(infoRequestJSON);
+        jsonStr = INFO_REQUEST;
+        // STEPTOE EDIT END 07/29/16
 
         //Getting the key word to compare and get the respective values of the slider
         var keyWord = $(this).attr("data-key");
@@ -967,7 +998,9 @@ function callWebServiceVersion() {
                 //
                 var index_2 = MyVersion.indexOf("API");
                 var Web = MyVersion.substring(0, index_2 - 1);
-                SetVersion(UI + " " + Web);
+                //SetVersion(UI + " " + Web);
+                SetVersion("Version: " + UI);
+                SetWeb(Web);
 
                 var index_3 = MyVersion.indexOf("Model");
                 var APIv = MyVersion.substring(index_2, index_3 - 1).fontsize(1);
@@ -1078,15 +1111,17 @@ function getJSONData(inputType) {
         });
     }
     else {
-        eyr["FLD"] = "STOPYR";
-        eyr["VAL"] = 2050;//parseInt($("#range-in-time-slider").attr("data-endyr"));
-        inputFields.push(eyr);
+        //eyr["FLD"] = "STOPYR";
+        //eyr["VAL"] = 2050;//parseInt($("#range-in-time-slider").attr("data-endyr"));
+        //inputFields.push(eyr);
 
+        //Should this be here?
+        //STEPTOE commented out for now
         //das
-        eyr = {};
-        eyr["FLD"] = "DECSNGAME";
-        eyr["VAL"] = 0;
-        inputFields.push(eyr);
+        //eyr = {};
+        //eyr["FLD"] = "DECSNGAME";
+        //eyr["VAL"] = 0;
+        //inputFields.push(eyr);
         // QUAY EDIT
 
     }
@@ -1337,7 +1372,10 @@ function getJSONData(inputType) {
     //Skip if window is Charts
     if ( getWindowType() != 'Charts') {
         //getting dependent fields
-        var infoRequest = JSON.parse(infoRequestJSON);
+        // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
+        //var infoRequest = JSON.parse(infoRequestJSON);
+        var infoRequest = INFO_REQUEST;
+        // STEPTOE EDIT END 07/29/16
 
         $.each(infoRequest.FieldInfo, function () {
 
@@ -1505,7 +1543,11 @@ function drawOutputCharts(outputJSON) {
 
     setStrtandEndYr();
 
-    inputJSONStr = JSON.parse(infoRequestJSON);
+    // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
+    //inputJSONStr = JSON.parse(infoRequestJSON);
+    inputJSONStr = INFO_REQUEST;
+    // STEPTOE EDIT END 07/29/16
+    
 
     //getting the fld names and sub controls
     $.each(inputJSONStr.FieldInfo, function () {
@@ -1748,6 +1790,11 @@ function getWindowType() {
 ////Self invoking function to set the input values and calling web service to populate the charts
 (
     function () {
+        // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
+        // ADD preparsed INFO_REQUEST
+        INFO_REQUEST = JSON.parse(infoRequestJSON);
+        // STEPTOE EDIT END 07/29/16
+
         //STEPTOE 07/11/14
         //If Com is defined and Window is a Charts tab overwrite Default functions
         if (getWindowType() == 'Charts') {
@@ -1783,9 +1830,8 @@ function getWindowType() {
 
         else {
             callWebService(getJSONData('parent'));
-
-
         }
+
 
         // QUAY EDIT 3/18/14 Begin
         callWebServiceVersion();
@@ -1794,6 +1840,11 @@ function getWindowType() {
 
         //setting load scenarios list from local storage
         setLoadScenarios();
+
+        //STEPTOE EDIT 08/23/16
+        //Hide input sliders and show buttons to select values
+        inputControls2Radios();
+
         // DAS ADDED 6/25/14
         // OK turn the walkthrough wizard off
         // 03.09.15 DAS

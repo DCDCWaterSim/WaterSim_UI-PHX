@@ -12,39 +12,24 @@
  
                     <div id="tabs">
                         <ul>
-                             <li><a href="#tabs-2">Supply</a></li>
-                            <li><a href="#tabs-3">Demand</a></li>
-                            <li><a href="#tabs-1"><p style="color:#FF5310"> Climate/River Flows</p></a></li>
-                            <li><a href="#tabs-4">Reservoirs/Rivers</a></li>
-                            <li><a href="#tabs-5">Sustainability</a></li>         
+                            <li><a href="#tabs-2">OUTPUTS: <br /> Supply</a></li>
+                            <li><a href="#tabs-3">OUTPUTS: <br />Demand</a></li>
+                            <li><a href="#tabs-4">OUTPUTS: <br />Reservoirs/Rivers</a></li>
+                            <li><a href="#tabs-1">INPUTS: <br />Climate/River Flows</a></li>
+                            <li><a href="#tabs-5"></a></li>         
                         </ul>
                  <!-------------------------  CLIMATE and DROUGHT -------------------------------------------->
                         <div id="dragResize-tab-1-off" class="click-to-top">
                           <div id="tabs-1" style="height:432px;">      
                               <div id="settings-tabs-climateDrought" style="background-color:#E6E6E6">
-                                <ul>
-                                 <li><a href="#settings-tabs-climateDrought-1">Climate</a></li>
-                                 <li><a href="#settings-tabs-climateDrought-2">Drought</a></li>
-                                </ul>
-                                   <div id="settings-tabs-climateDrought-1">
                                        <div id="climateTab">
-                                       <h7>Climate Effect: Riverine Flows</h7>
-                                             <h_1> Graduated Effect</h_1>
-                                                <div id="settings-tabs-climate" >
-                                                        <ul>
-                                                            <li><a href="#settings-tabs-climate-1">Colorado</a></li>
-                                                            <li><a href="#settings-tabs-climate-2">Salt-Verde</a></li>
-                                                            </ul>
-                                                       
-                                                        <div id="settings-tabs-climate-1">
-                                                            <Wsmi:InputUserControl ID="InputUserControl1" FieldKeyWord="COCLMADJ" runat="server" />
-                                                        </div>
-
-                                                        <div id="settings-tabs-climate-2">
-                                                            <h3><Wsmi:InputUserControl ID="InputUserControl2" FieldKeyWord="SVCLMADJ" runat="server" /></h3>
-                                                        </div>                                                    
-                                                </div>  
-                                           </div>
+                                            <h7>Climate Effect: Riverine Flows</h7>
+                                            <h_1> Graduated Effect</h_1>
+                                            <div id="settings-tabs-climate" >
+                                                <Wsmi:InputUserControl ID="InputUserControl1" FieldKeyWord="COCLMADJ" runat="server" />
+                                                <Wsmi:InputUserControl ID="InputUserControl2" FieldKeyWord="SVCLMADJ" runat="server" />
+                                            </div>  
+                                       </div>
                                        <!-- -->
                                          <div id="Image_container">                                       
                                             <img src="images\Low.png" id="img1" />
@@ -56,149 +41,62 @@
                                             <h7>Thirty-year River Flow Record</h7><br />
                                              <div><h_1>Magnitude and Pattern</h_1></div><div id="TRACESHelpControlContainer" class="help" data-key="TRACES"><img style="" src="Images/icon_help.png" /></div>
                                                 <div id="FlowRecord" >
-                                                 <ul id="flowRecordList"  >
-                                                 <li>&nbsp;          <input type="radio" id="RBdry" name="flowRecord" value="dry"   /><label id="flow1">&nbsp;Low flow years</label></li>
-                                                 <li><br />&nbsp; <input type="radio" id="RBmed" name="flowRecord" value="med" /><label id="flow2">&nbsp; Median flow years</label></li>
-                                                 <li><br />&nbsp; <input type="radio" id="RBwet" name="flowRecord" value="wet" /><label id="flow3">&nbsp; High flow years<br /></label></li>
-                                                 <li><br />&nbsp; <input type="radio" id="RBmix" name="flowRecord" value="mix" /><label id="flow4">&nbsp; High inter-annual variability <br /></label></li>                                                  
-
-                                              </ul>
-
+                                                 <%--<ul id="flowRecordList"  >
+                                                     <li>&nbsp;          <input type="radio" id="RBdry" name="flowRecord" value="dry"   /><label id="flow1">&nbsp;Low flow years</label></li>
+                                                     <li><br />&nbsp; <input type="radio" id="RBmed" name="flowRecord" value="med" /><label id="flow2">&nbsp; Median flow years</label></li>
+                                                     <li><br />&nbsp; <input type="radio" id="RBwet" name="flowRecord" value="wet" /><label id="flow3">&nbsp; High flow years<br /></label></li>
+                                                     <li><br />&nbsp; <input type="radio" id="RBmix" name="flowRecord" value="mix" /><label id="flow4">&nbsp; High inter-annual variability <br /></label></li>
+                                                 </ul>--%>
+                                                <select id="flowRecordList" name="flowRecord">
+                                                  <option id="RBdry" value="dry" selected>Low flow years</option> 
+                                                  <option id="RBmed" value="med">Median flow years</option>
+                                                  <option id="RBwet" value="wet">High flow years</option>
+                                                  <option id="RBmix" value="mix">High inter-annual variability</option>
+                                                </select>
                                            </div>
                                            <div>
                                            </div>
                                       </div>
 
                                        <div id="startYear">
-                                            &nbsp;&nbsp;&nbsp;<label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1922 </label> <br />
-                                          <br />&nbsp;&nbsp;&nbsp;<label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1955</label>
-
+                                           <label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1922 </label>
+                                           <br /><br />
+                                           <label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1955</label>
                                        </div>
 
-                                       <!-- -->
-                                    </div>
-                                    <div id="settings-tabs-climateDrought-2">
-                                           <div id="droughtTab">
-                                               <h7>Drought Effect on River Flows</h7><br />
-                                                 <h_1> Only During Bracketed Years</h_1>
-                                                <div id="settings-tabs-drought">
-                                                    <ul><li><a href="#settings-tabs-drought-1">Colorado</a></li>
-                                                           <li><a href="#settings-tabs-drought-2">Salt-Verde</a></li>
-                                                    </ul>
-                                                    <div id="settings-tabs-drought-1">
-                                                        <h3><Wsmi:InputUserControl ID="DroughtControlCO" FieldKeyWord="COUSRADJ" runat="server" /></h3>
+                                       <%--<div id="droughtTab">
+                                            <h7>Drought Effect on River Flows</h7><br />
+                                                <!--<h_1> Only During Bracketed Years</h_1>-->
+                                            <div id="settings-tabs-drought">
+                                                <ul><li><a href="#settings-tabs-drought-1">Colorado</a></li>
+                                                        <li><a href="#settings-tabs-drought-2">Salt-Verde</a></li>
+                                                </ul>
+                                                <div id="settings-tabs-drought-1">
+                                                    <h3><Wsmi:InputUserControl ID="DroughtControlCO" FieldKeyWord="COUSRADJ" runat="server" /></h3>
 
- 
-                                                    </div>
-                                                     <div id="settings-tabs-drought-2">
-                                                         <h3><Wsmi:InputUserControl ID="DroughtControlSTV" FieldKeyWord="SVUSRADJ" runat="server" /></h3>
-                                                     </div>
  
                                                 </div>
-                                             </div>
+                                                    <div id="settings-tabs-drought-2">
+                                                        <h3><Wsmi:InputUserControl ID="DroughtControlSTV" FieldKeyWord="SVUSRADJ" runat="server" /></h3>
+                                                    </div>
+ 
+                                            </div>
+                                        </div>--%>
 
-                                  <!-- -->
-				                       <script type="text/javascript">
-				                           $(function () {
-				                               var start_year = document.getElementById('COUSRSTR_v').value;
-				                               var end_year = 2050;
-				                               $('#COUSRSTP_v').datepicker({
-				                                   changeYear: true,
-				                                   changeMonth: false,
-				                                   showButtonPanel: false,
-				                                   dateFormat: 'yy',
-				                                   onChangeMonthYear: function (dateText, inst) {
-				                                       var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-				                                       $(this).datepicker('setDate', new Date(year, 1));
-				                                   }
-				                               })
-				                           });
-				                           $(function () {
-				                               var end_year = 2050
-				                               var start_year = 0
-				                               $('#COUSRSTR_v').datepicker({
-				                                   changeYear: true,
-				                                   changeMonth: false,
-				                                   showButtonPanel: false,
-				                                   dateFormat: 'yy',
-				                                   yearRange: '2014:2050',
-				                                   onChangeMonthYear: function (dateText, inst) {
-				                                       start_year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-				                                       $(this).datepicker('setDate', new Date(start_year, 1));
-				                                       $("#COUSRSTP_v").datepicker("option", "yearRange", start_year + ":2050");
-				                                       $("#COUSRSTP_v").prop('disabled', false);
-
-				                                   }
-				                               })
-				                           });
-				                           $(function () {
-				                               var start_year = document.getElementById('SVUSRSTR_v').value;
-				                               var end_year = 2050;
-				                               $('#SVUSRSTP_v').datepicker({
-				                                   changeYear: true,
-				                                   changeMonth: false,
-				                                   showButtonPanel: false,
-				                                   dateFormat: 'yy',
-				                                  // yearRange: start_year + ":" + end_year,
-				                                   yearRange: '2014:2050',
-				                                   onChangeMonthYear: function (dateText, inst) {
-				                                       var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-				                                       $(this).datepicker('setDate', new Date(year, 1));
-				                                   }
-				                               })
-				                           });
-				                           $(function () {
-				                               var end_year = 2050
-				                               var start_year = 0
-				                               $('#SVUSRSTR_v').datepicker({
-				                                   changeYear: true,
-				                                   changeMonth: false,
-				                                   showButtonPanel: false,
-				                                   dateFormat: 'yy',
-				                                   yearRange: '2013:2050',
-				                                   onChangeMonthYear: function (dateText, inst) {
-				                                       start_year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-				                                       $(this).datepicker('setDate', new Date(start_year, 1));
-				                                       $("#SVUSRSTP_v").datepicker("option", "yearRange", start_year + ":2050");
-				                                       $("#SVUSRSTP_v").prop('disabled', false);
-
-				                                   }
-				                               })
-				                           });
-				                     </script>
-				                     <style>
-					                    .ui-datepicker-calendar, .ui-datepicker-month,.ui-datepicker-prev, .ui-datepicker-next {
-						                    display: none;
-					                    }
-					                    #ui-datepicker-div button.ui-datepicker-current {display: none;}
-					                    #ui-datepicker-div button.ui-datepicker- {
-						                    color: black
-					                    }
-				                     </style>
-		                     <!-- -->
-		                     <!-- Start and End year in settings-tabs-climateDrought-2 -->
-				                     <div id="droughtStartStop" class="drought"><%--<div id="DROUGHTHelpControlContainer" class="help" data-key="DROUGHT"><img style="" src="Images/icon_help.png" /></div>--%>
-					                    <fieldset><legend style="font-family:'Times New Roman', serif">&nbsp;&nbsp;&nbsp Colorado River</legend>
-					                       <label for="COUSRSTR_v">Start year</label> <input type = "number" name="COUSRSTR_v" id="COUSRSTR_v" class="date-picker-year-1" value=""  style="font-family:'Times New Roman', serif "  />
-					                     </fieldset>
-					                      <fieldset><legend></legend>
-					                       <label for="COUSRSTP_v">End year </label>&nbsp<input type = "number" name="COUSRSTP_v" id="COUSRSTP_v" class="date-picker-year-2" value="" style="font-family:'Times New Roman', serif" disabled="disabled" />
-					                     </fieldset><br />
-					                     <fieldset><legend style="font-family:'Times New Roman', serif">&nbsp;&nbsp;&nbsp Salt-Verde Rivers</legend>
-					                      <label for="SVUSRSTR_v">Start year</label> <input type="number" name="SVUSRSTR_v" id="SVUSRSTR_v" class="date-picker-year-1" value="" style="font-family:'Times New Roman', serif" />
-					                     </fieldset>
-					                     <fieldset><legend></legend>
-					                       <label for="SVUSRSTP_v">End year </label>&nbsp<input type ="number" name="SVUSRSTP_v" id="SVUSRSTP_v" class="date-picker-year-3" value="" style="font-family:'Times New Roman', serif" disabled="disabled" />
-					                     </fieldset>                                     
-				                     </div>
-                                       
-
-
-                                  <!-- -->
+                                        <div id="droughtTab">
+                                            <h7>Drought Effect on River Flows</h7><br />
+                                                <%--<h_1> Only During Bracketed Years</h_1>--%>
+                                            <div id="settings-tabs-drought-test">
+                                                <Wsmi:InputUserControl ID="InputUserControl3" FieldKeyWord="DROUSCEN" runat="server" />
+ 
+                                            </div>
                                         </div>
-                                  </div>
 
-                                 </div>
+                                       <!-- Start and End year in settings-tabs-climateDrought-2 -->
+
+                                </div>
+                            </div>
+
                         </div>
                  <!-------------------------  END CLIMATE and DROUGHT -------------------------------------------->
 
@@ -309,15 +207,15 @@
 			                </div>
                                   <div class="frame" id="basic-sustain">
                                     <div id="isotope-sustainability-container">
-                                       <div class="item transition Indicators"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputControl14" Type="BASEL" FieldName="SINPCTGW,SINDENV,SINDAG,SINDPC,SINYRGWR" Title="Temporal Sustainability Indicators"  SeriesColors="2"/></div></div>
-                                       <div class="item transition GroundWater"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputContro15" Type="OFMPL" FieldName="PCTGWAVL"  Title="Percent of Original Groundwater Credits Available"  SeriesColors="2"/></div></div>
+ <%--                                      <div class="item transition Indicators"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputControl14" Type="BASEL" FieldName="SINPCTGW,SINDENV,SINDAG,SINDPC,SINYRGWR" Title="Temporal Sustainability Indicators"  SeriesColors="2"/></div></div>
+                                       <div class="item transition GroundWater"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputContro15" Type="OFMPL" FieldName="PCTGWAVL"  Title="Percent of Original Groundwater Credits Available"  SeriesColors="2"/></div></div>--%>
                                      </div>
     	    	                  </div>
-                            <div id="isotope-sustainability-filters" class="button-group">
+<%--                            <div id="isotope-sustainability-filters" class="button-group">
                               <a class="button" data-filter="*">All</a>
                               <a class="button" data-filter=".Indicators">Indicators</a>
                               <a class="button" data-filter=".GroundWater">Groundwater</a>
-                             </div>
+                             </div>--%>
                         </div>
                       </div>
                   <!------------------------------  END OF SUSTAINABILITY INDICATORS------------------------------------------------------>
