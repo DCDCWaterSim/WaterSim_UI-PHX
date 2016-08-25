@@ -23,7 +23,7 @@
                           <div id="tabs-1" style="height:432px;">      
                               <div id="settings-tabs-climateDrought" style="background-color:#E6E6E6">
                                        <div id="climateTab">
-                                            <h7>Climate Effect: Riverine Flows</h7>
+                                            <h7>Climate Effect on Riverine Flows</h7>
                                             <h_1> Graduated Effect</h_1>
                                             <div id="settings-tabs-climate" >
                                                 <Wsmi:InputUserControl ID="InputUserControl1" FieldKeyWord="COCLMADJ" runat="server" />
