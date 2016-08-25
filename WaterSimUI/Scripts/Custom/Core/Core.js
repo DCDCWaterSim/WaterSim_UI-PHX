@@ -1790,10 +1790,6 @@ function getWindowType() {
 ////Self invoking function to set the input values and calling web service to populate the charts
 (
     function () {
-        // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
-        // ADD preparsed INFO_REQUEST
-        INFO_REQUEST = JSON.parse(infoRequestJSON);
-        // STEPTOE EDIT END 07/29/16
 
         //STEPTOE 07/11/14
         //If Com is defined and Window is a Charts tab overwrite Default functions
@@ -1810,6 +1806,12 @@ function getWindowType() {
             }
             callWebServiceVersion();
             return;
+        }
+        else {
+            // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
+            // ADD preparsed INFO_REQUEST
+            INFO_REQUEST = JSON.parse(infoRequestJSON);
+            // STEPTOE EDIT END 07/29/16
         }
         //STEPTOE EDIT 07/11/15 END
 

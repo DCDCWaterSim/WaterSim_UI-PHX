@@ -195,6 +195,7 @@ function updateStrtYrEndYr(data) {
 //Recieved initial data to setup page (strYr,endYr,provider,webserviceData)
 function recieveRequestedData(data) {
     infoRequestJSON = data.infoRequestJSON;
+    INFO_REQUEST = JSON.parse(infoRequestJSON);
 
     // STEPTOE EDIT BEGIN 07/26/16 City Selection
     updateProviders(data);
