@@ -25,15 +25,17 @@
 
 /* Scrollbar */
 .scrollbar {
-    background: none repeat scroll 0 0 #333333;
+    /*background: none repeat scroll 0 0 #333333;*/
+    background: none repeat scroll 0 0 #ececec;
     height: 10px;
     line-height: 0;
     margin: 0 0 5px;
 }
 .scrollbar .handle {
-    background: radial-gradient(#FFFFFF, #990033) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    /*background: radial-gradient(#FFFFFF, #990033) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    background-image: -moz-linear-gradient(center top , #cccccc 0%, #999999 100%) !important;
     border-radius: 5px;
-    box-shadow: 0 0 8px #990033;
+    /*box-shadow: 0 0 8px #990033;*/
     cursor: pointer;
     height: 10px;
     width: 100px;

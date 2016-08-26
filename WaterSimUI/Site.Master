@@ -30,13 +30,13 @@
 </head>
 <body>
 
-    	<div id="WSLoading" style="height:100%;width:100%; background-color:#000000" >
-         <div style="height:50px;width: 1px; background-color:#000000"><hr /></div>
-         <div style="font-size:80px;color:antiquewhite;text-align:center; height:100px; vertical-align:middle"> Loading WaterSim </div>
-         <div style="text-align:center;background-color:#000000">
+    	<div id="WSLoading" style="height:100%;width:100%; background-color:#e6e6e6" >
+         <div style="height:50px;width: 1px;"><hr /></div>
+         <div style="font-size:80px;text-align:center; height:100px; vertical-align:middle"> Loading WaterSim </div>
+         <div style="text-align:center;">
            <p><img src="Images/DCDC_CMYK_Aug21_2013.png" style="vertical-align:middle; width:400px" /></p>
            <br />
-           <div style="color: #FFB310; font-size:22px; height:40px; vertical-align:middle">A Research Center Affiliate of the: </div>
+           <div style="font-size:22px; height:40px; vertical-align:middle">A Research Center Affiliate of the: </div>
            <p><img src="Images/wrigley_2.png" style="vertical-align:middle; width:400px" /></p>
 
           </div>
@@ -280,7 +280,7 @@
              </div>
           <!-- end DAS-->
           <!-- begin DAS-->
-            <div class="version">
+            <div class="version" style="margin-left: 20px;">
                 <a href="http://dcdc.asu.edu" target="_blank">
                     <img width="179" height="37" src="Images/DCDC_CMYK.png">
                 </a>

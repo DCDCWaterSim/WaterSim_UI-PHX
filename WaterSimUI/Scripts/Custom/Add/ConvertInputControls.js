@@ -26,10 +26,10 @@ else {
     inputControlRadioValues['WEBPRPCT'] = { checked: 100, values: [0, 50, 100], labels: ["Low", "Moderate", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
     inputControlRadioValues['WEBPOPGR'] = { checked: 100, values: [50, 100, 150], labels: ["Low", "Medium", "High"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
 
-    inputControlRadioValues['COCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Low", "Medium", "High"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
-    inputControlRadioValues['SVCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Low", "Medium", "High"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+    inputControlRadioValues['COCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Reduced", "Normal", "Increased"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+    inputControlRadioValues['SVCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Reduced", "Normal", "Increased"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
 
-    inputControlRadioValues['DROUSCEN'] = { checked: 1, values: [0, 1, 3], labels: ["Low", "Med", "High"], inputRange: [0, 3], labelRanges: [[0, 1], [1, 2], [2, 3]] };
+    inputControlRadioValues['DROUSCEN'] = { checked: 0, values: [0, 1, 2, 3], labels: ["None", "Low", "Med", "High"], inputRange: [0, 3], labelRanges: [[0, 1], [1, 2], [2, 3]] };
 }
 var inputControlRadioLabels = ["None", "Low", "Med", "High"];
 

@@ -14,16 +14,18 @@ The climate factor controls on the Climate/River Flows Tab
     /*height: 180px;*/
     height: 200px;
     /*width: 275px;*/
-    width: 290px;
+
+    width: 360px;
     
     padding: 10px;
     
     background-color: #e6e6e6;
     color: #555;
       text-align:center;
-    -webkit-box-shadow: 0 0 5px 5px #000000;
+    /*-webkit-box-shadow: 0 0 5px 5px #000000;
     -moz-box-shadow: 0 0 5px 5px #000000;
-    box-shadow: 0 0 5px 5px #000000;
+    box-shadow: 0 0 5px 5px #000000;*/
+    border: 1px solid;
     
 }
 
@@ -63,15 +65,16 @@ The climate factor controls on the Climate/River Flows Tab
 
     height: 100px; /*275px;*/
     /*width: 275px;*/
-    width: 290px; 
+    width: 360px; 
     padding: 10px;
     
     background-color: #e6e6e6;
     color: #555;
       text-align:center;
-    -webkit-box-shadow: 0 0 5px 5px #000000;
+    /*-webkit-box-shadow: 0 0 5px 5px #000000;
     -moz-box-shadow: 0 0 5px 5px #000000;
-    box-shadow: 0 0 5px 5px #000000;
+    box-shadow: 0 0 5px 5px #000000;*/
+    border: 1px solid;
 }
 #droughtTab-button-container {
   
@@ -131,7 +134,7 @@ River flow images
 #Image_container {
     position: absolute;
     left: 310px;
-    left: 340px;
+    left: 410px;
     /*top: 40px;*/
     top: 125px;
     
@@ -146,9 +149,10 @@ River flow images
    
      text-align:center;
     
-    -webkit-box-shadow: 0 0 5px 5px #000000;
+    /*-webkit-box-shadow: 0 0 5px 5px #000000;
     -moz-box-shadow: 0 0 5px 5px #000000;
-    box-shadow: 0 0 5px 5px #000000;
+    box-shadow: 0 0 5px 5px #000000;*/
+    border: 1px solid;
     
 }
 /*#Image_container img{
@@ -162,7 +166,7 @@ River flow images
     /*STEPTOE EDIT BEGIN 08/18/16*/
     /*left: 7px;*/
     /*top: 251px;*/
-    left: 340px;
+    left: 410px;
     top: 0px;
     /*STEPTOE EDIT END 08/18/16*/
 
@@ -173,9 +177,10 @@ River flow images
 
     color: #555;
     text-align:center;
-    -webkit-box-shadow: 0 0 5px 5px #000000;
+    /*-webkit-box-shadow: 0 0 5px 5px #000000;
     -moz-box-shadow: 0 0 5px 5px #000000;
-    box-shadow: 0 0 5px 5px #000000;    
+    box-shadow: 0 0 5px 5px #000000;*/
+    border: 1px solid;    
 }
 
 /* Contains the red border for the riverTab div */
@@ -202,7 +207,7 @@ River flow images
 
     /*width: 255px;*/
     /*width: 285px;*/
-    width: 300px;
+    width: 370px;
 
     padding: 5px;
     background-color: #e6e6e6;
@@ -210,9 +215,10 @@ River flow images
    
      text-align:center;
     
-    -webkit-box-shadow: 0 0 5px 5px #000000;
+    /*-webkit-box-shadow: 0 0 5px 5px #000000;
     -moz-box-shadow: 0 0 5px 5px #000000;
-    box-shadow: 0 0 5px 5px #000000;
+    box-shadow: 0 0 5px 5px #000000;*/
+    border: 1px solid;
     
 }
 

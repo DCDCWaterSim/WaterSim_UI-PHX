@@ -11,7 +11,7 @@
                     <link href="Content/isotope.css" rel="stylesheet" />
  
                     <div id="tabs">
-                        <ul>
+                        <ul style="border-bottom: 1px solid !important;">
                             <li><a href="#tabs-2">OUTPUTS: <br /> Supply</a></li>
                             <li><a href="#tabs-3">OUTPUTS: <br />Demand</a></li>
                             <li><a href="#tabs-4">OUTPUTS: <br />Reservoirs/Rivers</a></li>

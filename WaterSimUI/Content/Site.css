@@ -54,7 +54,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 body {
 	font: 12px/18px 'Open sans', sans-serif;
 	height: 100%;
-    background-color: #000000;
+    /*background-color: #000000;*/
+    background-color: #e6e6e6;
 }
 
 .wrapper {
@@ -79,7 +80,8 @@ body {
 h1 {
   color: #990033;
   text-shadow: 1px 1px 1px #FFFFFF;
-  font-size: 21px;
+  /*font-size: 21px;*/
+  font-size: x-large;
   margin-bottom: 8px;
 }
 
@@ -225,6 +227,7 @@ h7 {
     width: 190px;
     height: 50px;
     margin-left:20px;
+    margin-right:20px;
     /*STEPTOE EDIT END WaterSim-America style button*/
 
     float:left;
@@ -503,10 +506,11 @@ span.text-content {
 }
 
 .ui-slider-horizontal .ui-slider-handle {
-  box-shadow: 1px 1px 2px #444444;
+  /*box-shadow: 1px 1px 2px #444444;*/
+  box-shadow: 1px 1px 2px #000000;
   margin-left: -10px !important;
   top: -5px !important;
-  box-shadow: 0 0 4px #990033;
+  /*box-shadow: 0 0 4px #990033;*/
 }
 
 .slider-container, .desc {
@@ -555,8 +559,9 @@ span.text-content {
 }
 
 .ui-slider .ui-slider-range {
-  background: radial-gradient(#FFFFFF, #990033) repeat scroll 0 0 rgba(0, 0, 0, 0);
-  box-shadow: 0 0 8px #990033;
+  /*background: radial-gradient(#FFFFFF, #990033) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+  background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top , #cccccc 0%, #999999 100%) repeat scroll 0 0 !important;
+  /*box-shadow: 0 0 8px #990033;*/
 }
 
 select {
@@ -671,7 +676,7 @@ option {
 .ui-tabs .ui-tabs-panel {
   border: 0px solid #CCCCCC !important;
   padding: 17px 0 !important;
-  background-color: #4F5557 !important;
+  /*background-color: #4F5557 !important;*/
 }
 
 .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br, .ui-corner-left, .ui-corner-bl, .ui-corner-top, .ui-corner-tr, .ui-corner-left, .ui-corner-tl {
@@ -767,12 +772,12 @@ option {
 
 /* THIS IS WHAT CONTROLS THE COLOR OF THE BACKGROUND OF TAB STRIP in THE JQUERY TAB CONTROL RQ DAS 12 /19/14 */
 .middle .ui-tabs .ui-tabs-nav {
-    background-color: #000000 !important;
+    /*background-color: #000000 !important;*/
 }
 
 .ui-tabs-nav {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
-  border: 0 solid #AAAAAA !important;
+  border: 0 solid #AAAAAA !important;  
   color: #222222;
   font-weight: bold;
 }
@@ -897,6 +902,8 @@ option {
   height: 60px;
   float: left;
   background-color: #e6e6e6;
+
+  margin-right: 20px;
 		 
   /* for debugging position and layout*/
    /* border-style:dashed;
@@ -925,7 +932,8 @@ option {
     height: 40px;
     margin-top: 1px;
     padding-top: 2px;
-    text-shadow:none;
+    line-height: 1;
+    /*text-shadow:none;*/
     /*top: 0px;*/
     /*background-color: #e6e6e6;
     font-size: 20px;
@@ -959,7 +967,7 @@ option {
 }
 .header article.accordion
 {
-     background-color: #4F5557;
+     /*background-color: #4F5557;*/
 	display: block;
 	margin: 0 auto;
 	overflow: auto;
@@ -970,7 +978,7 @@ option {
 }
 
 .header article.accordion section {
-  background-color: #4F5557;
+  /*background-color: #4F5557;*/
   color: #4F5557;
   display: block;
   float:left;
@@ -1041,7 +1049,7 @@ option {
 	/*text-indent: 20px;*/ /*17px;*/
 	padding: 0;
 	margin: 0;
-	color: #ddd;
+	/*color: #ddd;*/
     
     /* for debugging position and layout*/
 	/*border-style:solid;
@@ -1090,7 +1098,7 @@ option {
 	text-indent: 15px;
 	padding: 0;
 	margin: 0;
-	color: #ddd;
+	/*color: #ddd;*/
 	
 	
 	-webkit-transform-origin: 0 0;
@@ -1197,7 +1205,7 @@ option {
 	margin: 0;
 	margin-left: 0px;
 	left: 0px;
-	color: #ddd;
+	/*color: #ddd;*/
 	width: auto;
   	text-shadow:none;
 	/*height: 25px;*/
@@ -1410,3 +1418,4 @@ option {
     margin-top: 15px;
     text-align: center;
 }
+
