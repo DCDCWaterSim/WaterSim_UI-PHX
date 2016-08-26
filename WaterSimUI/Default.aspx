@@ -23,7 +23,7 @@
                           <div id="tabs-1" style="height:432px;">      
                               <div id="settings-tabs-climateDrought" style="background-color:#E6E6E6">
                                        <div id="climateTab">
-                                            <h7>Climate Effect on Riverine Flows</h7>
+                                            <h7>Climate Effect on Riverine Flows</h7><br />
                                             <h_1> Graduated Effect</h_1>
                                             <div id="settings-tabs-climate" >
                                                 <Wsmi:InputUserControl ID="InputUserControl1" FieldKeyWord="COCLMADJ" runat="server" />
@@ -122,7 +122,7 @@
                                 </div>
 			                </div>
 
-                            <div id="isotope-supply-filters" class="button-group">
+                            <div id="isotope-supply-filters" class="button-group shifted-down">
                                 <a class="button" data-filter=".Supply">Water Supply</a>
                                 <a class="button" data-filter=".Credits">Credits</a>
                                 <a class="button" data-filter=".Aquifer">Regional Aquifer</a>
@@ -152,7 +152,7 @@
 				                </div>
 			                </div>
                        
-                            <div id="isotope-demand-filters" class="button-group">
+                            <div id="isotope-demand-filters" class="button-group shifted-down">
                               <a class="button display" data-filter=".total">Water Demand</a>
                               <a class="button population-button" data-filter=".population">Population</a>
                               <a class="button display" data-filter=".gpcd">GPCD</a>
@@ -183,7 +183,7 @@
                                 </div>
 			                </div>
 
-                            <div id="isotope-reservoir-filters" class="button-group">
+                            <div id="isotope-reservoir-filters" class="button-group shifted-down">
                                <a class="button" data-filter=".reservoirsCO">CO Reservoirs</a>
                                <a class="button" data-filter=".reservoirsSV">SV Reservoirs</a>
 

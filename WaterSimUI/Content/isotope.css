@@ -10,6 +10,10 @@
     text-align: left;
 }
 
+.button-group.shifted-down {
+    margin-top: 70px !important;
+}
+
 .button {
     -webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(black), to(rgba(0, 0, 0, 0))) 1 100%; 
     -webkit-border-image: -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%; 

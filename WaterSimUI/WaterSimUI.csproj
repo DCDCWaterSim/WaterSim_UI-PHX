@@ -217,8 +217,11 @@
     <Content Include="Images\asulogo1.jpg" />
     <Content Include="Images\dcdc-logo.png" />
     <Content Include="Images\DCDC_CMYK.png" />
+    <Content Include="Images\DCDC_CMYK_Aug21_2013.png" />
+    <Content Include="Images\DCDC_CMYK_Aug21_2013_Grey.png" />
     <Content Include="Images\icon_help.png" />
     <Content Include="Images\wrigley.jpg" />
+    <Content Include="Images\wrigley_2_Grey.png" />
     <Content Include="Report.html" />
     <Content Include="Scripts\Chosen\chosen-sprite%402x.png" />
     <Content Include="Scripts\Chosen\chosen-sprite.png" />
