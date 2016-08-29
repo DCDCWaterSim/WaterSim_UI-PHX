@@ -179,9 +179,9 @@ $(document).ready(function () {
         $('body').append(
             '<div id="dialog-login" title="Login">' +
                 '<label for="groupName">Please enter a group name:</label>' +
-                '<input type="text" id="groupName" name="groupName"><br>' +
+                '<input type="text" id="groupName" name="groupName" style="width:150px;"><br>' +
                 '<label for="userName">Please enter a username (if applicable):</label>' +
-                '<input type="text" id="userName" name="userName"><br>' +
+                '<input type="text" id="userName" name="userName" style="width:150px;"><br>' +
 			    '</div>' +
             '</div>'
         );
@@ -195,12 +195,15 @@ $(document).ready(function () {
             modal: true,
             open: function(event, ui) {
                 $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+                $('.ui-widget-overlay.ui-front').css('z-index', 150);
+                $("#dialog-login").parent().css('z-index', 151);
             },
             buttons: {
                 "Login": {
                     click: function () {
-                        console.log($('#groupName').val() + ', ' + $('#userName').val())
-                        $('.slider-container').css('z-index', 'auto');
+                        console.log($('#groupName').val() + ', ' + $('#userName').val());
+                        $('.ui-widget-overlay.ui-front').css('z-index', 'auto');
+                        $("#dialog-login").parent().css('z-index', 'auto');
                         $(this).dialog("close");
                     },
                     'class': 'button',
@@ -208,8 +211,6 @@ $(document).ready(function () {
                 }
             }
         });
-
-        $('.slider-container').css('z-index', 0);
 
         $("#dialog-login").dialog("open");
     }
