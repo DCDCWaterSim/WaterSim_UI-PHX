@@ -23,7 +23,7 @@ else {
     inputControlRadioValues['REGRECEFF'] = { checked: 17, values: [17, 58, 100], labels: ["Low", "Medium", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
     inputControlRadioValues['WEBAGTR1'] = { checked: 31, values: [31, 65, 100], labels: ["Low", "Moderate", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
     inputControlRadioValues['ENFLOAMT'] = { checked: 0, values: [0, 79044, 158088], labels: ["None", "Some", "Most"], inputRange: [0, 158088], labelRanges: [[0, 39522], [39522, 79044], [79044, 158088]] };
-    inputControlRadioValues['ENFLOPCT'] = { checked: 0, values: [0, 79044, 158088], labels: ["None", "Some", "Most"], inputRange: [0, 158088], labelRanges: [[0, 39522], [39522, 79044], [79044, 158088]] };
+    inputControlRadioValues['ENFLOPCT'] = { checked: 0, values: [0, 50, 100], labels: ["None", "Some", "Most"], inputRange: [0, 100], labelRanges: [[0, 33], [33, 66], [66, 100]] };
     inputControlRadioValues['WEBPRPCT'] = { checked: 100, values: [0, 50, 100], labels: ["Low", "Moderate", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
     inputControlRadioValues['WEBPOPGR'] = { checked: 100, values: [50, 100, 150], labels: ["Low", "Medium", "High"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
 

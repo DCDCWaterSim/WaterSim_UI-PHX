@@ -82,7 +82,7 @@ function setSlider() {
         // ------------------------------------------------------------------------------------------------------------
          TargetID = "ENVIInputUserControl";
          BaseID = "_ControlContainer";
-         SetEnvScale(TargetID, BaseID);
+         //SetEnvScale(TargetID, BaseID);
 
         // ===========================================================
         
