@@ -1437,6 +1437,18 @@ function getJSONData(inputType) {
 
     outputData["Providers"] = providers;
 
+    //STEPTOE EDIT BEGIN 08/30/16 Group/User login
+    var groupName = $('#groupName').val();
+    if (typeof (groupName) != "undefined" && groupName.trim().length) {
+        inputData['User'] = groupName.trim();
+
+        var userName = $('#userName').val();
+        if (typeof (userName) != "undefined" && userName.trim().length) {
+            inputData['Password'] = userName.trim();
+        }
+    }
+    //STEPTOE EDIT END 07/26/16 Group/User login
+
     jsonData['inputJsonArray'] = JSON.stringify(inputData);
     jsonData['outputJsonArray'] = JSON.stringify(outputData);
 

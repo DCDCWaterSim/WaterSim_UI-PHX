@@ -202,9 +202,14 @@ $(document).ready(function () {
                 "Login": {
                     click: function () {
                         console.log($('#groupName').val() + ', ' + $('#userName').val());
-                        $('.ui-widget-overlay.ui-front').css('z-index', 'auto');
-                        $("#dialog-login").parent().css('z-index', 'auto');
-                        $(this).dialog("close");
+                        if ($('#groupName').val().trim().length) {
+                            $('.ui-widget-overlay.ui-front').css('z-index', 'auto');
+                            $("#dialog-login").parent().css('z-index', 'auto');
+                            $(this).dialog("close");
+                        }
+                        else {
+                            alert("Please enter a valid Group Name.");
+                        }
                     },
                     'class': 'button',
                     text: 'Login'
