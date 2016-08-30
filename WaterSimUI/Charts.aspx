@@ -36,9 +36,9 @@
 								<input type="checkbox" id="checkboxReservoirs" name="Reservoirs">
 									<label for="checkboxReservoirs">Reservoirs/Rivers</label>
                                 <br>
-								<input type="checkbox" id="checkboxSustainability" name="Sustainability">
+								<%--<input type="checkbox" id="checkboxSustainability" name="Sustainability">
 									<label for="checkboxSustainability">Sustainability</label>
-                                <br>
+                                <br>--%>
                                 <input type="checkbox" id="checkboxAll" name="All">
 									<label for="checkboxAll">All</label>
 							</div>

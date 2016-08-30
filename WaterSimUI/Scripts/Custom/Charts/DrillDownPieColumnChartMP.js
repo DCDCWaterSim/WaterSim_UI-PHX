@@ -1,6 +1,6 @@
 ﻿
 /// <reference path="/Scripts/Custom/Charts/ChartTools.js" />
-function drawDrillDownPieColumnChartMP(jsonData, controlID, subControls, fldLabName, fldValue, providerName, index, Min, Max, Units) {
+function drawDrillDownPieColumnChartMP($jsonObj, controlID, subControls, fldLabName, fldValue, providerName, index, Min, Max, Units) {
     var divID = $("#" + controlID).find("div[id*=ChartContainer]").attr('id');
     var fldnames = $("#" + controlID).attr("data-fld");
     var title = $("#" + controlID).attr("data-title");
@@ -15,7 +15,9 @@ function drawDrillDownPieColumnChartMP(jsonData, controlID, subControls, fldLabN
         plotOptions = false;
 
     
-    var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
+    // DO NOT NEEED TO DO THIS MULTIPLE TIMEs
+    // QUAY EDIT 2 8 16
+    //var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
 
     // --------------------------------------------------------------------------------------------------
     var axisTitleStyle = {

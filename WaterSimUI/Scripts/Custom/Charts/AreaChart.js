@@ -1,5 +1,5 @@
 ﻿// Generic Area Chart modified by DAS
-function drawAreaChart(jsonData, controlID, subcontrols, fldLabName, fldValue, strtYr, endYr, index, Min, Max, Unt) {
+function drawAreaChart($jsonObj, controlID, subcontrols, fldLabName, fldValue, strtYr, endYr, index, Min, Max, Unt) {
 
   
 
@@ -7,7 +7,9 @@ function drawAreaChart(jsonData, controlID, subcontrols, fldLabName, fldValue, s
     var fldnames = $("#" + controlID).attr("data-fld");
     var title = $("#" + controlID).attr("data-title");
 
-    var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
+    // DO NOT NEEED TO DO THIS MULTIPLE TIMEs
+    // QUAY EDIT 2 8 16
+    //var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
 
     // --------------------------------------------------------------------------------------------------
     var axisTitleStyle = {

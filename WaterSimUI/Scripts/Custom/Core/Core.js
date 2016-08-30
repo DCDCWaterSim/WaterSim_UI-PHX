@@ -470,12 +470,12 @@ function setInputControlsFromScenario(JSONData) {
 
 //Getting the div ID drop down list selected item changed
 $(".ddlType").change(function () {
-    drawChart($(this).closest('div[id*=OutputControl]').attr('id'));
+    drawChart($(this).closest('div[id*=OutputControl]').attr('id'), $jsonObj);
 });
 
 //Getting the div ID drop down list selected item changed
 $(".ddlflds").change(function () {
-    drawChart($(this).closest('div[id*=OutputControl]').attr('id'));
+    drawChart($(this).closest('div[id*=OutputControl]').attr('id'), $jsonObj);
 });
 
 
@@ -514,7 +514,7 @@ function temporalSliderChange(slider) {
         //looping through the output controls and getting the required data and populating the charts
         $('.OutputControl').each(function () {
             var controlID = $(this).attr('id');
-            drawChart(controlID);
+            drawChart(controlID, $jsonObj);
         });
 
         drawAllIndicators();
@@ -542,7 +542,7 @@ function Time_Chart_Draw() {
         //looping through the output controls and getting the required data and populating the charts
         $('.OutputControl').each(function () {
             var controlID = $(this).attr('id');
-            drawChart(controlID);
+            drawChart(controlID, $jsonObj);
         });
 
         drawAllIndicators();
@@ -562,7 +562,7 @@ $(document).on('change', 'input[name="geography"]', function () {
 
         if (type == "MFOP") {
             $("#" + controlID).find("select[id*=ddlfld]").val(provider);
-            drawChart(controlID);
+            drawChart(controlID, $jsonObj);
         }
     });
     //STEPTOE EDIT 07/15/15 BEGIN
@@ -580,7 +580,7 @@ $(document).on('change', 'input[name="temporal"]', function () {
     //looping through the output controls and getting the required data and populating the charts
     $('.OutputControl').each(function () {
         var controlID = $(this).attr('id');
-        drawChart(controlID);
+        drawChart(controlID, $jsonObj);
     });
 
     drawAllIndicators();
@@ -935,9 +935,17 @@ function callWebService(jsonData) {
         dataType: "json",
         async: false,
         success: function ($res) {
-            setInputControls($res.d);
-            drawOutputCharts($res.d);
+            jsondata = $res.d;
+            // QUAY EDIT 1 29 16
+            // This parses the output, which is then passed to these functions already parsed, no need to do it again
+            WS_RETURN_DATA = $.parseJSON($res.d);
 
+            // QUAY EDIT 4/4/16 BEGIN
+            //setInputControls($res.d);
+            //drawOutputCharts($res.d);
+            setInputControls(WS_RETURN_DATA);
+            drawOutputCharts(WS_RETURN_DATA);
+            
             //STEPTOE ADD 07/15/15 BEGIN
             //If window is Default.aspx send webService data to windows
             if(getWindowType() == 'Default')
@@ -1452,11 +1460,15 @@ function setSpecialInputControls(aFLD, aval) {
     }
 }
 
-
 //Setting the slider with values obtained from the service
-function setInputControls(outputJSON) {
 
-    var jsonstr = $.parseJSON(outputJSON);
+// QUAY EDIT 1 29 16
+// Modified to return parsed json, no need to do twoce
+//function setInputControls(outputJSON) {
+function setInputControls(jsonstr) {
+
+    //    var jsonstr = $.parseJSON(outputJSON);
+    // END QUAY EDIT
 
     $.each(jsonstr.RESULTS, function () {
 
@@ -1524,10 +1536,15 @@ function setStrtandEndYr() {
     //STEPTOE EDIT 07/15/15 END
 }
 
+// QUAY EDIT 1 29 16
+// Modofied to receive jason already parsed no need to do this more than once
 //draw output charts depending on the output controls used
-function drawOutputCharts(outputJSON) {
+//function drawOutputCharts(outputJSON) {
+function drawOutputCharts($jsonObjLocal) {
 
-    jsondata = outputJSON;
+    //jsondata = outputJSON;
+
+    // END QUAY EDIT
 
     subControls = {};
     fldNames = {};
@@ -1543,7 +1560,7 @@ function drawOutputCharts(outputJSON) {
 
     setStrtandEndYr();
 
-    // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
+    // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST prepased
     //inputJSONStr = JSON.parse(infoRequestJSON);
     inputJSONStr = INFO_REQUEST;
     // STEPTOE EDIT END 07/29/16
@@ -1588,8 +1605,11 @@ function drawOutputCharts(outputJSON) {
     //STEPTOE EDIT END 07/26/16 City Selection
 
 
-    $jsonObj = JSON.parse(jsondata);
-
+    // QUAY EDIT 1 29 16
+    // NO NEED FOR THIS, Info come into function parsed, see above
+    //$jsonObj = JSON.parse(jsondata);
+    $jsonObj = $jsonObjLocal;
+    // END QUAY EDIT
     $.each($jsonObj.RESULTS, function () {
         fldValues[this.FLD] = this.VALS;
 
@@ -1599,7 +1619,10 @@ function drawOutputCharts(outputJSON) {
     //looping through the output controls and getting the required data and populating the charts
     $('.OutputControl').each(function () {
         var controlID = $(this).attr('id');
-        drawChart(controlID);
+        // QUAT EDIT 1 30 16
+        // modified to pass parsed json object
+        drawChart(controlID, $jsonObj);
+        // END Quay Edit
     });
 
     drawAllIndicators();
@@ -1637,8 +1660,10 @@ ColorSeriesArray[8] = seriesColumn7;
 
 var seriesColors = seriesLine;
 
-//
-function drawChart(controlID) {
+// QUAY EDIT 1 30 16
+// modified to pass parsed json object
+// function drawChart(controlID) {
+function drawChart(controlID, jsondata) {
     var MyChartType;
 
     var type = $("#" + controlID).attr("data-Type");

@@ -1,6 +1,6 @@
 ﻿// <reference path="/Scripts/Custom/Charts/StackedColumnChart.js" />
 
-function drawColumnStackedChart(jsonData, controlID, subcontrols, fldLabName, fldValue, strtYr, endYr, index, MINes, MAXes, Units) {
+function drawColumnStackedChart($jsonObj, controlID, subcontrols, fldLabName, fldValue, strtYr, endYr, index, MINes, MAXes, Units) {
 
 
     var divID = $("#" + controlID).find("div[id*=ChartContainer]").attr('id');
@@ -9,7 +9,9 @@ function drawColumnStackedChart(jsonData, controlID, subcontrols, fldLabName, fl
     
     var option = $("#" + controlID).find("select[id*=ddlfld]").find("option:selected").val();
     
-    var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
+    // DO NOT NEEED TO DO THIS MULTIPLE TIMEs
+    // QUAY EDIT 2 8 16
+    //var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
 
     // --------------------------------------------------------------------------------------------------
     var axisTitleStyle = {

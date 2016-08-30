@@ -41,8 +41,8 @@ $(function () {
                         addDemand();
                     if (checkBoxValues["Reservoirs"])
                         addResevoirs();
-                    if (checkBoxValues["Sustainability"])
-                        addSustainability();
+                    //if (checkBoxValues["Sustainability"])
+                    //    addSustainability();
 
                     loadCharts();
 
@@ -219,7 +219,7 @@ function recieveRequestedData(data) {
     }*/
     // STEPTOE EDIT END 07/26/16 City Selection
 
-    drawOutputCharts(data.testData);
+    drawOutputCharts($.parseJSON(data.testData));
 }
 //Temporal Radio Changed update charts
 function recieveTemporalRadioChange(data) {
@@ -228,7 +228,7 @@ function recieveTemporalRadioChange(data) {
     //looping through the output controls to populate the charts
     $('.OutputControl').each(function () {
         var controlID = $(this).attr('id');
-        drawChart(controlID);
+        drawChart(controlID, $jsonObj);
     });
 }
 //Geography Radio Changed update charts
@@ -241,7 +241,7 @@ function recieveGeographyRadioChange(data) {
 
         if (type == "MFOP") {
             $("#" + controlID).find("select[id*=ddlfld]").val(data.provider);
-            drawChart(controlID);
+            drawChart(controlID, $jsonObj);
         }
     });
 }
@@ -252,14 +252,15 @@ function recieveSelectedProvidersChange(data) {
     //looping through the output controls to populate the charts
     $('.OutputControl').each(function () {
         var controlID = $(this).attr('id');
-        drawChart(controlID);
+        drawChart(controlID, $jsonObj);
     });
 }
 //Model Successful ran and returned new data
 function recieveWebServSuccess(data) {
     //$("#WSLoading").hide();
     updateProviders(data);
-    drawOutputCharts(data.testData);
+    jsondata = data.testData;
+    drawOutputCharts($.parseJSON(data.testData));
 }
 //Model is about to run show loading screen
 function recieveLoading() {

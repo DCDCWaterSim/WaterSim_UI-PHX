@@ -1,4 +1,4 @@
-﻿function drawDrillDownLineChartTEMP(jsonData, controlID, subControls, fldLabName, fldValue, providerName, strtYr, endYr, index, Min, Max, Unt) {
+﻿function drawDrillDownLineChartTEMP($jsonObj, controlID, subControls, fldLabName, fldValue, providerName, strtYr, endYr, index, Min, Max, Unt) {
 
     // DAS --------------------------------------------------------------
     // This code is used to scale the y axis, and to assign units
@@ -15,7 +15,9 @@
     var fldnames = $("#" + controlID).attr("data-fld");
     var title = $("#" + controlID).attr("data-title");
 
-    var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
+    // DO NOT NEEED TO DO THIS MULTIPLE TIMEs
+    // QUAY EDIT 2 8 16
+    //var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
 
     // --------------------------------------------------------------------------------------------------
     var axisTitleStyle = {

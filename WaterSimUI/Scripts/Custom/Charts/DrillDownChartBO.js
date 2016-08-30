@@ -1,11 +1,13 @@
 ﻿/// <reference path="/Scripts/Custom/Charts/ChartTools.js" />
 // USED FOR CODE "BASEL"
-function drawDrillDownChartBO(jsonData, controlID, subControls, fldLabName, fldValue, strtYr, endYr, index, Min, Max, Units, seriescolors, chartTypeCode) {
+function drawDrillDownChartBO($jsonObj, controlID, subControls, fldLabName, fldValue, strtYr, endYr, index, Min, Max, Units, seriescolors, chartTypeCode) {
     var divID = $("#" + controlID).find("div[id*=ChartContainer]").attr('id');
     var fldnames = $("#" + controlID).attr("data-fld");
     var title = $("#" + controlID).attr("data-title");
 
-    var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
+    // DO NOT NEEED TO DO THIS MULTIPLE TIMEs
+    // QUAY EDIT 2 8 16
+    //var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
 
     // --------------------------------------------------------------------------------------------------
     var axisTitleStyle = {

@@ -1,11 +1,13 @@
 ﻿/// <reference path="/Scripts/Custom/Charts/ChartTools.js" />
-function drawProvidersChart(jsonData, controlID, subcontrols, fldLabName, fldValue, providerName, strtYr, endYr, index, Min, Max, Units, seriescolors,chartTypeCode) {
+function drawProvidersChart($jsonObj, controlID, subcontrols, fldLabName, fldValue, providerName, strtYr, endYr, index, Min, Max, Units, seriescolors, chartTypeCode) {
 
     var divID = $("#" + controlID).find("div[id*=ChartContainer]").attr('id');
     var fldnames = $("#" + controlID).attr("data-fld");
     var title = $("#" + controlID).attr("data-title");
 
-    var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
+    // DO NOT NEEED TO DO THIS MULTIPLE TIMEs
+    // QUAY EDIT 2 8 16
+    //var $jsonObj = $.parseJSON(jsonData); //parsing the Input String as Json object
     //
     var seriesColors = seriescolors;
     // --------------------------------------------------------------------------------------------------
