@@ -180,6 +180,10 @@ function updateProviders(data) {
             //for each chart
             for (var i = 0; i < valArray.length; i++) {
                 $('.ddlflds')[i].value = valArray[i];
+
+                if ($('.ddlflds')[i].value == "") {
+                    $('.ddlflds')[i].value = $('.ddlflds')[i].options[0].value;
+                }
             }
         } catch (e) {
             console.log("updateProviders", providerInfo)
