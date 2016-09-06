@@ -132,33 +132,35 @@ function setSlider() {
     });
     $("#point-in-time").html($("#point-in-time-slider").slider("value"));
 
-    $("#range-in-time-slider").slider({
-        range: true,
+    $("#range-in-time-slider").slider({        
         min: 2015,
         max: 2085,
+        range: true,
         values: [parseInt($("#range-in-time-slider").attr("data-strtyr")), parseInt($("#range-in-time-slider").attr("data-endyr"))],
+        //range: "min",
+        //value: parseInt($("#range-in-time-slider").attr("data-endyr")),
         slide: function (event, ui) {
             // STEPTOE EDIT 07/28/16 BEGIN RiT max range modification 
             var range = ui.values[1] - ui.values[0];
             var start = ui.values[0],
                 end = ui.values[1];
 
-            if (range > 40) {
-                range = 40;
-                if (ui.values[0] == this.startValues[0]) {
-                    start = end - range;
-                    this.startValues[0] = start;
-                    $("#range-in-time-slider").slider("values", 0, start);
-                    //console.log('updating the start: ' + start);
-                }
-                else {
-                    end = start + range;
-                    $("#range-in-time-slider").slider("values", 1, end);
-                    //console.log('updating the end: ' + end);
-                }
-            }
+            //if (range > 40) {
+            //    range = 40;
+            //    if (ui.values[0] == this.startValues[0]) {
+            //        start = end - range;
+            //        this.startValues[0] = start;
+            //        $("#range-in-time-slider").slider("values", 0, start);
+            //        //console.log('updating the start: ' + start);
+            //    }
+            //    else {
+            //        end = start + range;
+            //        $("#range-in-time-slider").slider("values", 1, end);
+            //        //console.log('updating the end: ' + end);
+            //    }
+            //}
 
-            $("#range-in-time").html(range);
+            $("#range-in-time").html(range + " years");
             //console.log('range: ' + (end-start));
 
             // QUAY EDIT 3/13/14 begin
@@ -190,6 +192,10 @@ function setSlider() {
         }
     });
     $("#range-in-time").html($("#range-in-time-slider").slider("values", 1) - $("#range-in-time-slider").slider("values", 0) + " years");
+
+    // STEPTOE EDIT 09/01/16 BEGIN Hide left-handle of slider
+    $($('#range-in-time-slider').children('a')[0]).hide();
+    // STEPTOE EDIT 09/01/16 END
 }
 
 function SetScale(targetid, Baseid) {

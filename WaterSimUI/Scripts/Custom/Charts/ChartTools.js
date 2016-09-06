@@ -128,7 +128,10 @@ function JudgeXStep(firstyear, lastyear, ticsize) {
     var range = lastyear - firstyear;
     var ticN = range / ticsize;
     var stepInt = 1;
-    if (ticN > 19) { stepInt = 5; }
+    // STEPTOE 09/01/16 EDIT BEGIN Increase step size for smaller ranges
+    //if (ticN > 19) { stepInt = 5; }
+    if (ticN > 11) { stepInt = 5; }
+    // STEPTOE 09/01/16 EDIT END
     else if (ticN > 9) { stepInt = 2; }
     return stepInt;
 }
