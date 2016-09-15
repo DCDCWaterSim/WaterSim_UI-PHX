@@ -307,7 +307,8 @@ function RaiseIndicator(TheControl) {
 
 function drawBaseBackground(IndControl) {
     var CT = IndControl.CT;
-    var TheValue = IndControl.value;
+    //var TheValue = IndControl.value;
+    var TheValue = 100 - IndControl.value;
     var MyWidth = IndControl.Frame.width;
     var MyHeight = IndControl.Frame.height;
     var MyLeft = IndControl.Frame.left;
@@ -1432,7 +1433,8 @@ function offsetMountain(IC) {
 // =====================================================
 function DrawAGR(TheControl) {
     var TheContext = TheControl.CT;
-    var value = TheControl.value;
+    //var value = TheControl.value;
+    var value = 100 - TheControl.value;
     var MyWidth = TheControl.Frame.width;
     var MyHeight = TheControl.Frame.height;
     var MyLeft = TheControl.Frame.left;
@@ -1489,7 +1491,8 @@ function Agforeground(CT, MyLeft, MyTop, MyWidth, MyHeight, Horizon, value) {
     if (value > 0) {
         Yinc = groundHeight / 100;
         //ValueHeight = value * Yinc;
-        ValueHeight = (100-value) * Yinc;
+        ValueHeight = (100 - value) * Yinc;
+        //ValueHeight = ( value) * Yinc;
         if (AgGrnPattern != null) {
             CT.fillStyle = AgGrnPattern;
             CT.fillRect(MyLeft, Horizon + (groundHeight - ValueHeight), MyWidth, ValueHeight);
@@ -1498,7 +1501,8 @@ function Agforeground(CT, MyLeft, MyTop, MyWidth, MyHeight, Horizon, value) {
             var PCTStr = "0" + "%";
         }
         else {
-            var PCTStr = value.toString() + "%";
+            var PCTStr = 100 - value.toString() + "%";
+            //var PCTStr = value.toString() + "%";
         }
         fontsize = Math.round(WaterHeight / divisor);
         fontstr = fontsize.toString() + "px Arial"

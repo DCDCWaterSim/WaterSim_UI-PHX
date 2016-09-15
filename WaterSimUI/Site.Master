@@ -185,7 +185,7 @@
                         <div  class="ICwrapper">
                             <div id="SI_AGWATER_IHelpControlContainer" class="help" data-key="SI_AGWATER">
                                  <h2 id="idAGRDiv" class ="IndicatorControl" data-fld="SINDAG">
-                                     Ag To Urban
+                                     Ag Production
                                 </h2>
                             </div>
                          </div>
@@ -290,11 +290,17 @@
              </div>
           <!-- end DAS-->
           <!-- begin DAS-->
-            <div class="version" style="margin-left: 20px;">
+  <%--          <div class="version" style="margin-left: 20px;">
+                <a href="http://dcdc.asu.edu" target="_blank">
+                    <img width="179" height="37" src="Images/DCDC_CMYK.png">
+                </a>
+            </div>--%>
+           <div class="version" style="margin-left: 20px;">
                 <a href="http://dcdc.asu.edu" target="_blank">
                     <img width="179" height="37" src="Images/DCDC_CMYK.png">
                 </a>
             </div>
+
             <%--<div class="feedback">
                 <h3>WaterSim 5.0 - <A href="http://dcdc.asu.edu" target="dcdc">Decision Center for a Desert City</A> </h3> <p>Arizona State University: &copy;  <%: DateTime.Now.Year %> <a href="http://www.asu.edu/copyright/" target="_blank" >Copyright & Trademark</a></p>
             </div>--%>

@@ -59,9 +59,9 @@
                                       </div>
 
                                        <div id="startYear">
-                                           <label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1922 </label>
+                                           <label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1938 </label>
                                            <br /><br />
-                                           <label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1955</label>
+                                           <label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1946</label>
                                        </div>
 
                                        <%--<div id="droughtTab">
