@@ -121,7 +121,8 @@ h7 {
 .content {
 	/*padding: 0 0 0 305px;*/
     /*STEPTOE EDIT BEGIN 08/18/16*/
-    padding: 0 0 0 400px;
+    /*padding: 0 0 0 400px;*/
+    padding: 0 0 0 490px;
     /*STEPTOE EDIT END 08/18/16*/
 }
 
@@ -159,7 +160,8 @@ h7 {
   position: relative;
   /*width: 275px;*/
   /*STEPTOE EDIT BEGIN 08/18/16*/
-  width: 370px;
+  /*width: 370px;*/
+  width: 460px;
   height: 495px;
   /*STEPTOE EDIT END 08/18/16*/
   /* border-radius: 4px; */

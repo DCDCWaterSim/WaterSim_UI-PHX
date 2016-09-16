@@ -20,17 +20,28 @@ if (window.location.href.toLowerCase().indexOf('ipad') > -1)
     // inputControlRadioValues['PCON'] = { checked: "High", values: [0, 50, 75, 100], labels: ["None", "Low", "Med", "High"] };
 }
 else {
-    inputControlRadioValues['REGRECEFF'] = { checked: 17, values: [17, 58, 100], labels: ["Low", "Medium", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
-    inputControlRadioValues['WEBAGTR1'] = { checked: 31, values: [31, 65, 100], labels: ["Low", "Moderate", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
-    inputControlRadioValues['ENFLOAMT'] = { checked: 0, values: [0, 79044, 158088], labels: ["None", "Some", "Most"], inputRange: [0, 158088], labelRanges: [[0, 39522], [39522, 79044], [79044, 158088]] };
-    inputControlRadioValues['ENFLOPCT'] = { checked: 0, values: [0, 50, 100], labels: ["None", "Some", "Most"], inputRange: [0, 100], labelRanges: [[0, 33], [33, 66], [66, 100]] };
-    inputControlRadioValues['WEBPRPCT'] = { checked: 100, values: [0, 50, 100], labels: ["Low", "Moderate", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
-    inputControlRadioValues['WEBPOPGR'] = { checked: 100, values: [50, 100, 150], labels: ["Low", "Medium", "High"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+    //inputControlRadioValues['REGRECEFF'] = { checked: 17, values: [17, 58, 100], labels: ["Low", "Medium", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
+    //inputControlRadioValues['WEBAGTR1'] = { checked: 31, values: [31, 65, 100], labels: ["Low", "Moderate", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
+    //inputControlRadioValues['ENFLOAMT'] = { checked: 0, values: [0, 79044, 158088], labels: ["None", "Some", "Most"], inputRange: [0, 158088], labelRanges: [[0, 39522], [39522, 79044], [79044, 158088]] };
+    //inputControlRadioValues['ENFLOPCT'] = { checked: 0, values: [0, 50, 100], labels: ["None", "Some", "Most"], inputRange: [0, 100], labelRanges: [[0, 33], [33, 66], [66, 100]] };
+    //inputControlRadioValues['WEBPRPCT'] = { checked: 100, values: [0, 50, 100], labels: ["Low", "Moderate", "High"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
+    //inputControlRadioValues['WEBPOPGR'] = { checked: 100, values: [50, 100, 150], labels: ["Low", "Medium", "High"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
 
-    inputControlRadioValues['COCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Reduced", "Normal", "Increased"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
-    inputControlRadioValues['SVCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Reduced", "Normal", "Increased"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+    //inputControlRadioValues['COCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Reduced", "Normal", "Increased"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+    //inputControlRadioValues['SVCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Reduced", "Normal", "Increased"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
 
-    inputControlRadioValues['DROUSCEN'] = { checked: 0, values: [0, 1, 2, 3], labels: ["None", "Low", "Med", "High"], inputRange: [0, 3], labelRanges: [[0, 1], [1, 2], [2, 3]] };
+    //inputControlRadioValues['DROUSCEN'] = { checked: 0, values: [0, 1, 2, 3], labels: ["None", "Low", "Med", "High"], inputRange: [0, 3], labelRanges: [[0, 1], [1, 2], [2, 3]] };
+
+    inputControlRadioValues['REGRECEFF'] = { checked: 17, values: [17, 58, 100], labels: ["Labels", "Not", "Provided"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
+    inputControlRadioValues['WEBAGTR1'] = { checked: 31, values: [31, 65, 100], labels: ["Labels", "Not", "Provided"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
+    inputControlRadioValues['ENFLOAMT'] = { checked: 0, values: [0, 79044, 158088], labels: ["Labels", "Not", "Provided"], inputRange: [0, 158088], labelRanges: [[0, 39522], [39522, 79044], [79044, 158088]] };
+    inputControlRadioValues['ENFLOPCT'] = { checked: 0, values: [0, 50, 100], labels: ["Labels", "Not", "Provided"], inputRange: [0, 100], labelRanges: [[0, 33], [33, 66], [66, 100]] };
+    inputControlRadioValues['WEBPRPCT'] = { checked: 100, values: [0, 50, 100], labels: ["Labels", "Not", "Provided"], inputRange: [0, 100], labelRanges: [[0, 34], [34, 82], [82, 100]] };
+    inputControlRadioValues['WEBPOPGR'] = { checked: 100, values: [50, 100, 150], labels: ["Labels", "Not", "Provided"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+
+    inputControlRadioValues['COCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Labels", "Not", "Provided"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+    inputControlRadioValues['SVCLMADJ'] = { checked: 100, values: [50, 100, 150], labels: ["Labels", "Not", "Provided"], inputRange: [0, 150], labelRanges: [[0, 65], [65, 115], [115, 150]] };
+    inputControlRadioValues['DROUSCEN'] = { checked: 0, values: [0, 1, 2, 3], labels: ["Labels", "Info", "Not", "Provided"], inputRange: [0, 3], labelRanges: [[0, 1], [1, 2], [2, 3]] };
 }
 var inputControlRadioLabels = ["None", "Low", "Med", "High"];
 
@@ -40,14 +51,42 @@ function buildRadioInputControl(id, fieldName, controlOptions) {
     html += divRadio;
 
     var radioLabels = controlOptions.labels;
+    var foundChecked = false;
+    var length = radioLabels.length;
 
-    for (var i = 0; i < radioLabels.length; i++) {
+    for (var i = 0; i < length; i++) {
         var radio = "";
         var label = radioLabels[i];
-        if (controlOptions.values[i] == controlOptions.checked)
+        var labelRanges = controlOptions.labelRanges;
+
+        if (controlOptions.values[i] == controlOptions.checked) {
             radio += inputRadioChecked;
-        else
-            radio += inputRadio;
+            foundChecked = true;
+        }
+        else {
+            var radioDefined = false;
+            if (!foundChecked) {
+                if (i < (length - 1)) {
+                    if (controlOptions.checked >= labelRanges[i][0] && controlOptions.checked < labelRanges[i][1]) {
+                        radio += inputRadioChecked;
+                        foundChecked = true;
+                        radioDefined = true;
+                    }
+                }
+                else {
+                    if (controlOptions.checked >= labelRanges[i][0] && controlOptions.checked <= labelRanges[i][1]) {
+                        radio += inputRadioChecked;
+                        foundChecked = true;
+                        radioDefined = true;
+                    }
+                }
+            }
+
+            if (!radioDefined) {
+                radio += inputRadio;
+            }
+        }
+            
 
         radio += labelOpen + label + labelClose;
 
@@ -165,6 +204,30 @@ function ShowHighestInputControlValue() {
 }
 // QUAY EDIT 4/12/16 END
 
+function getLabelRanges(min, max, values) {
+    var result = [],
+        length = values.length,
+        lastValue = 0;
+    for (var i = 0; i < length; i++) {
+        var tempArray = [];
+        if (i == 0) {
+            tempArray.push(min);
+            lastValue = Math.round(values[i] + (values[i + 1] - values[i]) / 2);
+            tempArray.push(lastValue);
+        }
+        else if (i < (length - 1)) {
+            tempArray.push(lastValue);
+            lastValue = Math.round(values[i] + (values[i + 1] - values[i]) / 2);
+            tempArray.push(lastValue);
+        }
+        else {
+            tempArray.push(lastValue);
+            tempArray.push(max);
+        }
+        result.push(tempArray)
+    }
+    return result;
+}
 
 function inputControls2Radios() {
     //Parse input control field information
@@ -176,12 +239,15 @@ function inputControls2Radios() {
     //Loop through all fields and find those which are input controls
     //Must have labels and their associated values specified from server to be found
     for(var i = 0; i < fieldInfo.length; i++){
-        if (fieldInfo[i].WEBSCL && fieldInfo[i].WEBSCL.length) {
+        if (fieldInfo[i].labels && fieldInfo[i].labels.length) {
             //store the field and its information for when the radio control is created
+            var values = fieldInfo[i].values;
             inputControlRadioValues[fieldInfo[i].FLD] = {
                 checked: -1,
-                values: fieldInfo[i].WEBSCVAL,
-                labels: fieldInfo[i].WEBSCL
+                values: values,
+                labels: fieldInfo[i].labels,
+                inputRange: [fieldInfo[i].MIN, fieldInfo[i].MAX],
+                labelRanges: getLabelRanges(fieldInfo[i].MIN, fieldInfo[i].MAX, values),
             }
         }
     }

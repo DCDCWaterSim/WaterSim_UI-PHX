@@ -1000,21 +1000,21 @@ function callWebServiceVersion() {
         async: false,
         success: function ($res) {
             var verdata = $.parseJSON($res.d);
-
+            console.log(verdata)
             if (verdata.VERSION) {
-                var MyVersion = verdata.VERSION.substring(10, verdata.length).fontsize(1);
+                var MyVersion = verdata.VERSION.substring(0, verdata.length).fontsize(1);
                 //
-                var index_2 = MyVersion.indexOf("API");
+                var index_2 = MyVersion.indexOf("A");
                 var Web = MyVersion.substring(0, index_2 - 1);
                 //SetVersion(UI + " " + Web);
                 SetVersion("Version: " + UI);
                 SetWeb(Web);
 
-                var index_3 = MyVersion.indexOf("Model");
+                var index_3 = MyVersion.indexOf("M");
                 var APIv = MyVersion.substring(index_2, index_3 - 1).fontsize(1);
                 API(APIv);
 
-                var Modelv = MyVersion.substring(index_3 - 2, verdata.length).fontsize(1);
+                var Modelv = MyVersion.substring(index_3, verdata.length).fontsize(1);
 
                 Model(Modelv);
 
