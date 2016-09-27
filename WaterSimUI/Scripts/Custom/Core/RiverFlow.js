@@ -4,7 +4,8 @@
 // low med high flow years for Saltverde
 var SVFlowLow = 1946;
 var SVFlowMed = 1955;
-var SVFlowDefault = 1946;
+//var SVFlowDefault = 1946;
+var SVFlowDefault = 1955;
 var SVFlowHigh = 1965;
 var SVFlowMixed = 1974;
 
@@ -12,7 +13,8 @@ var SVFlowMixed = 1974;
 var COFlowLow = 1938;
 var COFlowMed = 1922;
 //var COFlowDefault = 1922; 03.05.15 DAS
-var COFlowDefault = 1938;
+//var COFlowDefault = 1938;
+var COFlowDefault = 1922;
 var COFlowHigh = 1906;
 var COFlowMixed = 1975;
 
@@ -29,8 +31,8 @@ var STVDroughtStopValue = 2012;
 function SetFlowValues(value) {
     switch (value) {
         case "dry":
-            SVRiverFlowValue = SVFlowDefault;
-            CORiverFlowValue = COFlowDefault;
+            SVRiverFlowValue = SVFlowLow;
+            CORiverFlowValue = COFlowLow;
             // Load the image for dry flow traces
             $('#img1').show();
             $('#img2').hide();
@@ -80,6 +82,7 @@ function SetFlowLabels()
 function SetFlowRadio(value) {
     switch (value) {
         //STEPTOE EDIT BEGIN 08/24/16 - Changed RiverFlow from radio to dropdown
+        //Set Med as default
          case "dry":
             //$('input[id="RBdry"]').prop('checked', true);
              $('#flowRecordList').val('dry')
@@ -103,22 +106,22 @@ function SetFlowRadio(value) {
         default:
             //$('input[id="RBdry"]').prop('checked', true);
             //'select[name=flowRecord]'
-            $('#flowRecordList').val('dry')
-            SetFlowValues('dry');
+            $('#flowRecordList').val('med')
+            SetFlowValues('med');
             $('#img4').hide();
             $('#img1').hide();
             $('#img2').hide();
             $('#img3').hide();
         //STEPTOE EDIT END 08/24/16
-
     }
+
 }
 //--------------------------------------------------
 // for the coorado, determine what condition matches this date
 function GetCoFlow(val) {
     var rtnval = "";
     switch (val) {
-        case COFlowDefault:
+        case COFlowLow:
             rtnval = "dry";
             break;
         case COFlowMed:
@@ -130,8 +133,11 @@ function GetCoFlow(val) {
         case COFlowMixed:
             rtnval = "mix";
             break;
+        case COFlowDefault:
+            rtnval = "med";
+            break;
         default:
-            rtnval = "dry";
+            rtnval = "med";
     }
 
     return rtnval;
@@ -205,15 +211,22 @@ $('#flowRecordList').change(function () {
 function setDefaultDrought() {
     // 03.05.15 DAS
    // Clear the drought text boxes for both riverine systems
-    var COstart_array = $('input[id="COUSRSTR_v"]');
-    COstart_array[0].value = "";
-    var COstop_array = $('input[id="COUSRSTP_v"]');
-    COstop_array[0].value = "";
-    var STVstart_array = $('input[id="SVUSRSTR_v"]');
-    STVstart = STVstart_array[0].value = "";
-    var STVstop_array = $('input[id="SVUSRSTP_v"]');
-    STVstop = STVstop_array[0].value="";
+    //var COstart_array = $('input[id="COUSRSTR_v"]');
+    //COstart_array[0].value = "";
+    //var COstop_array = $('input[id="COUSRSTP_v"]');
+    //COstop_array[0].value = "";
+    //var STVstart_array = $('input[id="SVUSRSTR_v"]');
+    //STVstart = STVstart_array[0].value = "";
+    //var STVstop_array = $('input[id="SVUSRSTP_v"]');
+    //STVstop = STVstop_array[0].value="";
 
+    // STEPTOE BEGIN EDIT 09/26/16
+    // Drought is now a buttonset
+    var defaultRadio = $('#GraphControls_InputUserControl3_radio_None');
+    defaultRadio.prop('checked', true);
+    $('#GraphControls_InputUserControl3_buttonset').buttonset('refresh');
+    SetSliderValue(defaultRadio.parent().parent().parent().attr('id'), defaultRadio.val());
+    $("#GraphControls_InputUserControl3_number").val(defaultRadio.val());
 };
 
 

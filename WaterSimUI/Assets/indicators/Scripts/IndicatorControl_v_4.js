@@ -72,7 +72,7 @@ function getDomWidthWithID(anID) {
 
 
 
-function IndicatorControl(divId, anIndicatorType, ControlId, Width, Height) {
+function IndicatorControl(divId, anIndicatorType, ControlId, Width, Height, Margin) {
     //var myHeight = 100;
     //var myWidth = 100;
     this.id = ControlId
@@ -171,6 +171,13 @@ function IndicatorControl(divId, anIndicatorType, ControlId, Width, Height) {
     this.canvas.height = this.height
     this.canvas.id = this.DivID + this.id + "Canvas";
     this.canvas.style.position = "absolute";
+
+    // STEPTOE UPDATE WIDTH HERE for two line indicator title START 09/26/16
+    if (this.canvas.id == "idAGRDividAGRIndicatorCanvas") {
+        this.canvas.style.margin = '22px 0 0';
+    }
+    // STEPTOE UPDATE WIDTH HERE for two line indicator title END 09/26/16
+
     this.CT = this.canvas.getContext("2d");
     this.canvas.onclick = this.onclick;
     // Set defualt colors

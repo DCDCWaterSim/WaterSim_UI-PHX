@@ -14,8 +14,9 @@ The climate factor controls on the Climate/River Flows Tab
     /*height: 180px;*/
     height: 200px;
     /*width: 275px;*/
-
-    width: 440px;
+    /*Sampson 09.19.16*/
+    width: 450px;
+    width: 400px;
     /*width: 360px;*/
     
     padding: 10px;
@@ -62,12 +63,14 @@ The climate factor controls on the Climate/River Flows Tab
     /*left: 7px;*/
     left: 7px;
     top: 235px;
+     top: 240px;
     /*STEPTOE EDIT END 08/18/16*/
 
     height: 100px; /*275px;*/
     /*width: 275px;*/
 
-    width: 440px;
+    width: 450px;
+    width: 400px;
     /*width: 360px;*/ 
     
     padding: 10px;
@@ -138,7 +141,8 @@ River flow images
 #Image_container {
     position: absolute;
     left: 310px;
-    left: 490px;
+    left: 500px;
+      left: 440px;
     /*left: 410px;*/
     /*top: 40px;*/
     top: 125px;
@@ -171,7 +175,9 @@ River flow images
     /*STEPTOE EDIT BEGIN 08/18/16*/
     /*left: 7px;*/
     /*top: 251px;*/
-    left: 490px;
+    left: 500px;
+    /*SAMPSON 09.19.16*/
+     left: 440px;
     /*left: 410px;*/
     top: 0px;
     /*STEPTOE EDIT END 08/18/16*/
@@ -208,12 +214,14 @@ River flow images
     left: 7px;
     /*top: 373px;*/
     top: 370px;
+     top: 379px;
     
     height: auto;
 
     /*width: 255px;*/
     /*width: 285px;*/
-    width: 450px;
+    width: 460px;
+    width: 410px;
     /*width: 370px;*/
 
     padding: 5px;

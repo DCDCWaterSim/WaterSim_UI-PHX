@@ -122,7 +122,9 @@ h7 {
 	/*padding: 0 0 0 305px;*/
     /*STEPTOE EDIT BEGIN 08/18/16*/
     /*padding: 0 0 0 400px;*/
-    padding: 0 0 0 490px;
+    padding: 0 0 0 500px;
+     /*SAMPSON 09.19.16*/
+     padding: 0 0 0 465px;
     /*STEPTOE EDIT END 08/18/16*/
 }
 
@@ -161,7 +163,9 @@ h7 {
   /*width: 275px;*/
   /*STEPTOE EDIT BEGIN 08/18/16*/
   /*width: 370px;*/
-  width: 460px;
+  width: 480px;
+   /*SAMPSON 09.19.16*/
+   width: 440px;
   height: 495px;
   /*STEPTOE EDIT END 08/18/16*/
   /* border-radius: 4px; */
@@ -1110,6 +1114,10 @@ option {
 	-o-transform: rotate(-90deg);
 	transform: rotate(-90deg);
 	
+    /*
+        STEPTOE EDIT To add space for two lined indicators
+    */
+    line-height: 1;
 }
 
 .header article.accordion section h2 a

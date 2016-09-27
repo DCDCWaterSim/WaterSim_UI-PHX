@@ -48,8 +48,8 @@
                                                      <li><br />&nbsp; <input type="radio" id="RBmix" name="flowRecord" value="mix" /><label id="flow4">&nbsp; High inter-annual variability <br /></label></li>
                                                  </ul>--%>
                                                 <select id="flowRecordList" name="flowRecord">
-                                                  <option id="RBdry" value="dry" selected>Low flow years</option> 
-                                                  <option id="RBmed" value="med">Median flow years</option>
+                                                  <option id="RBdry" value="dry">Low flow years</option> 
+                                                  <option id="RBmed" value="med" selected>Median flow years</option>
                                                   <option id="RBwet" value="wet">High flow years</option>
                                                   <option id="RBmix" value="mix">High inter-annual variability</option>
                                                 </select>
@@ -59,9 +59,9 @@
                                       </div>
 
                                        <div id="startYear">
-                                           <label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1938 </label>
+                                           <label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1922 </label>
                                            <br /><br />
-                                           <label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1946</label>
+                                           <label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1955</label>
                                        </div>
 
                                        <%--<div id="droughtTab">

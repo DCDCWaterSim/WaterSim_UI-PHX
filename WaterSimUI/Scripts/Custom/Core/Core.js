@@ -29,7 +29,7 @@
 // UI Version
 var WaterSimVersion = "UI: 22.7.1  ";
 var UI = WaterSimVersion.fontsize(1);
-var INFO_REQUEST;
+var INFO_REQUEST = null;
 //function SetVersion(theVersion) {
 //    console.log('theVersion:', theVersion);
 //    $("#VersionInfo").html(theVersion);
@@ -61,6 +61,7 @@ function remove_hvJSONData() {
 
 if (getWindowType() != 'Charts') {
     var infoRequestJSON = $('input[id$=JSONData]').val();
+    INFO_REQUEST = JSON.parse(infoRequestJSON);
     localStorage.clear();
     //setting a default name to active scenario
     if (!localStorage.actvScenario) {
@@ -313,7 +314,7 @@ $(document).ready(function () {
                     //loading the scenario and calling the web service
                     setInputControlsFromScenario(localStorage[scenarioName]);
                     localStorage.actvScenario = scenarioName;
-                    setProviderCheckBoxes();
+                    //setProviderCheckBoxes();
                     callWebService(getJSONData('parent'));
 
                     alert("You loaded a scenario successfully!!!");
@@ -349,8 +350,9 @@ $(document).ready(function () {
             setInputControlsFromScenario(localStorage[scenarioName]);
             localStorage.actvScenario = scenarioName;
             setLoadScenarios();
-            setProviderCheckBoxes();
-            SetFlowRadio("default")
+            //setProviderCheckBoxes();
+            SetFlowRadio("default");
+            SetFlowLabels();
             // QUAY EDIT 6/13/14
             //callWebService(getJSONData('parent'));
             callWebService(getJSONData('empty'));
@@ -742,6 +744,9 @@ $(document).on('click', '.trace-CO', function () {
 
 
 });
+
+//setStateInformation();
+
 ////Self invoking function to set the input values and calling web service to populate the charts
 //(function () {
 
@@ -1000,7 +1005,7 @@ function callWebServiceVersion() {
         async: false,
         success: function ($res) {
             var verdata = $.parseJSON($res.d);
-            console.log(verdata)
+
             if (verdata.VERSION) {
                 var MyVersion = verdata.VERSION.substring(0, verdata.length).fontsize(1);
                 //
@@ -1173,10 +1178,10 @@ function getJSONData(inputType) {
         eyr = {};
 
         // DAS edit, 04.20.15
-        eyr = {};
-        eyr["FLD"] = "DECSNGAME";
-        eyr["VAL"] = 0;
-        inputFields.push(eyr);
+        //eyr = {};
+        //eyr["FLD"] = "DECSNGAME";
+        //eyr["VAL"] = 0;
+        //inputFields.push(eyr);
         // QUAY EDIT
         // Forcing this to true
         eyr = {};
@@ -1202,27 +1207,32 @@ function getJSONData(inputType) {
         outputFields.push(eyr["FLD"]);
 
         // DAS edits 10.15.14
-        eyr = {};
-        eyr["FLD"] = "COUSRSTR";
-        eyr["VAL"] = CODroughtStartValue;
-        DefaultInputs.push(eyr);
-        outputFields.push(eyr["FLD"]);
+        //eyr = {};
+        //eyr["FLD"] = "COUSRSTR";
+        //eyr["VAL"] = CODroughtStartValue;
+        //DefaultInputs.push(eyr);
+        //outputFields.push(eyr["FLD"]);
 
-        eyr = {};
-        eyr["FLD"] = "COUSRSTP";
-        eyr["VAL"] = CODroughtStopValue;
-        DefaultInputs.push(eyr);
-        outputFields.push(eyr["FLD"]);
+        //eyr = {};
+        //eyr["FLD"] = "COUSRSTP";
+        //eyr["VAL"] = CODroughtStopValue;
+        //DefaultInputs.push(eyr);
+        //outputFields.push(eyr["FLD"]);
 
-        eyr = {};
-        eyr["FLD"] = "SVUSRSTR";
-        eyr["VAL"] = STVDroughtStartValue;
-        DefaultInputs.push(eyr);
-        outputFields.push(eyr["FLD"]);
+        //eyr = {};
+        //eyr["FLD"] = "SVUSRSTR";
+        //eyr["VAL"] = STVDroughtStartValue;
+        //DefaultInputs.push(eyr);
+        //outputFields.push(eyr["FLD"]);
 
+        //eyr = {};
+        //eyr["FLD"] = "SVUSRSTP";
+        //eyr["VAL"] = STVDroughtStopValue;
+        //DefaultInputs.push(eyr);
+        //outputFields.push(eyr["FLD"]);
         eyr = {};
-        eyr["FLD"] = "SVUSRSTP";
-        eyr["VAL"] = STVDroughtStopValue;
+        eyr["FLD"] = "DROUSCEN";
+        eyr["VAL"] = 0;
         DefaultInputs.push(eyr);
         outputFields.push(eyr["FLD"]);
 
@@ -1234,10 +1244,10 @@ function getJSONData(inputType) {
     } else {
 
         // DAS edit. 04.20.15
-        eyr = {};
-        eyr["FLD"] = "DECSNGAME";
-        eyr["VAL"] = 0;
-        inputFields.push(eyr);
+        //eyr = {};
+        //eyr["FLD"] = "DECSNGAME";
+        //eyr["VAL"] = 0;
+        //inputFields.push(eyr);
         // QUAY EDIT
 
         eyr = {};
@@ -1272,91 +1282,94 @@ function getJSONData(inputType) {
         outputFields.push(eyr["FLD"]);
         // eyr = {};
         //
-        var COstart_array = $('input[id="COUSRSTR_v"]');
-        var COstart = undefined;
-        if ($('input[id="COUSRSTR_v"]').length > 0)
-            COstart = COstart_array[0].value;
-        var MinDifference = "10";
 
-        if (COstart != undefined) {
-        }
-        else {
-            var COstart = "2014";
-        }
-        if (COstart != "") {
-            eyr = {};
-            eyr["FLD"] = "COUSRSTR";
-            eyr["VAL"] = COstart;
-            inputFields.push(eyr);
-        }
+        // STEPTOE BEGIN EDIT 09/26/16 Shouldn't need these fields anymore
+        //var COstart_array = $('input[id="COUSRSTR_v"]');
+        //var COstart = undefined;
+        //if ($('input[id="COUSRSTR_v"]').length > 0)
+        //    COstart = COstart_array[0].value;
+        //var MinDifference = "10";
 
-        var COstop_array = $('input[id="COUSRSTP_v"]');
-        var COstop = undefined;
-        if ($('input[id="COUSRSTP_v"]').length > 0)
-            COstop = COstop_array[0].value;
+        //if (COstart != undefined) {
+        //}
+        //else {
+        //    var COstart = "2014";
+        //}
+        //if (COstart != "") {
+        //    eyr = {};
+        //    eyr["FLD"] = "COUSRSTR";
+        //    eyr["VAL"] = COstart;
+        //    inputFields.push(eyr);
+        //}
 
-        if (COstop != undefined) {
-            if (COstart != "") {
+        //var COstop_array = $('input[id="COUSRSTP_v"]');
+        //var COstop = undefined;
+        //if ($('input[id="COUSRSTP_v"]').length > 0)
+        //    COstop = COstop_array[0].value;
 
-                if (COstop == "") {
-                    alert("No drought stop year: Colorado River- was entered!");
-                    COstop = COstart;
-                }
-            }
+        //if (COstop != undefined) {
+        //    if (COstart != "") {
 
-        }
-        else {
-            COstop = "2015";
-        }
+        //        if (COstop == "") {
+        //            alert("No drought stop year: Colorado River- was entered!");
+        //            COstop = COstart;
+        //        }
+        //    }
 
-        if (COstop != "") {
-            eyr = {};
-            eyr["FLD"] = "COUSRSTP";
-            eyr["VAL"] = COstop;
-            inputFields.push(eyr);
-        }
+        //}
+        //else {
+        //    COstop = "2015";
+        //}
 
-        var STVstart_array = $('input[id="SVUSRSTR_v"]');
-        var STVstart = undefined;
-        if ($('input[id="SVUSRSTR_v"]').length > 0)
-            STVstart = STVstart_array[0].value;
+        //if (COstop != "") {
+        //    eyr = {};
+        //    eyr["FLD"] = "COUSRSTP";
+        //    eyr["VAL"] = COstop;
+        //    inputFields.push(eyr);
+        //}
 
-        if (STVstart != undefined) {
+        //var STVstart_array = $('input[id="SVUSRSTR_v"]');
+        //var STVstart = undefined;
+        //if ($('input[id="SVUSRSTR_v"]').length > 0)
+        //    STVstart = STVstart_array[0].value;
 
-            if (STVstart != "") {
-                if (STVstop == "") {
-                    alert("No drought stop year: Salt-Verde Rivers- was entered!");
-                    STVstop = STVstart;
-                }
-            }
-        }
-        else {
-            STVstart = "2014";
-        }
-        if (STVstart != "") {
-            eyr = {};
-            eyr["FLD"] = "SVUSRSTR";
-            eyr["VAL"] = STVstart;
-            inputFields.push(eyr);
-        }
+        //if (STVstart != undefined) {
 
-        var STVstop_array = $('input[id="SVUSRSTP_v"]');
-        var STVstop = undefined;
-        if ($('input[id="SVUSRSTP_v"]').length > 0)
-            STVstop = STVstop_array[0].value;
+        //    if (STVstart != "") {
+        //        if (STVstop == "") {
+        //            alert("No drought stop year: Salt-Verde Rivers- was entered!");
+        //            STVstop = STVstart;
+        //        }
+        //    }
+        //}
+        //else {
+        //    STVstart = "2014";
+        //}
+        //if (STVstart != "") {
+        //    eyr = {};
+        //    eyr["FLD"] = "SVUSRSTR";
+        //    eyr["VAL"] = STVstart;
+        //    inputFields.push(eyr);
+        //}
+
+        //var STVstop_array = $('input[id="SVUSRSTP_v"]');
+        //var STVstop = undefined;
+        //if ($('input[id="SVUSRSTP_v"]').length > 0)
+        //    STVstop = STVstop_array[0].value;
 
 
-        if (STVstop != undefined) {
-        }
-        else {
-            STVstop = "2015";
-        }
-        if (STVstop != "") {
-            eyr = {};
-            eyr["FLD"] = "SVUSRSTP";
-            eyr["VAL"] = STVstop;
-            inputFields.push(eyr);
-        }
+        //if (STVstop != undefined) {
+        //}
+        //else {
+        //    STVstop = "2015";
+        //}
+        //if (STVstop != "") {
+        //    eyr = {};
+        //    eyr["FLD"] = "SVUSRSTP";
+        //    eyr["VAL"] = STVstop;
+        //    inputFields.push(eyr);
+        //}
+        // STEPTOE END EDIT 09/26/16 Shouldn't need these fields anymore
 
 
         inputData["Inputs"] = inputFields;
@@ -1847,7 +1860,7 @@ function getWindowType() {
         else {
             // STEPTOE EDIT BEGIN 07/29/16 INFO_REQUEST
             // ADD preparsed INFO_REQUEST
-            INFO_REQUEST = JSON.parse(infoRequestJSON);
+            //INFO_REQUEST = JSON.parse(infoRequestJSON);
             // STEPTOE EDIT END 07/29/16
         }
         //STEPTOE EDIT 07/11/15 END

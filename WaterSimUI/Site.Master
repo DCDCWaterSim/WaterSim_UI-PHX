@@ -185,7 +185,7 @@
                         <div  class="ICwrapper">
                             <div id="SI_AGWATER_IHelpControlContainer" class="help" data-key="SI_AGWATER">
                                  <h2 id="idAGRDiv" class ="IndicatorControl" data-fld="SINDAG">
-                                     Ag Production
+                                     Ag Transfer</br>To Municipal
                                 </h2>
                             </div>
                          </div>
@@ -527,6 +527,9 @@
     <!-- QUAY EDIT 6/30/14 ---------------------------------------------> 
     <!-- <script src="Assets/indicators/Scripts/indicatorsCore.js"></script> -->
     <script src="Assets/indicators/Scripts/indicatorsCore_v2.js"></script>
+
+    <script src="Assets/indicators/Scripts/indicator.js"></script>
+    
     <script src="Scripts/Custom/Core/ReportTools.js"></script>
     <!-- END QUAY EDIT 6/30/14 ------------------------------------ -->    
     <script src="Scripts/Custom/Core/RiverFlow.js"> </script>
@@ -534,6 +537,8 @@
     <script src="Scripts/Custom/Add/ConvertInputControls.js"></script>
     <!-- STEPTOE EDIT END 07/29/16 -->
     <!-- STEPTOE EDIT BEGIN 10/17/14 -->
+    <script src="Scripts/Custom/Add/STC.js"></script>
+    <script src="Scripts/Custom/Add/State.js"></script>
     <script src="Scripts/Custom/Add/CoreAdd.js"></script>
     <script src="Scripts/Custom/Core/Core.js"></script>
     <!-- STEPTOE EDIT END 10/17/14 -->

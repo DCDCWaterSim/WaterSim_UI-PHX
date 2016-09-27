@@ -111,8 +111,17 @@ function ResetIndicatorSections(indWidth, indHeight) {
 
     $(".accordion").each(function () {
         //var allelem = $(this).find("*");
+        
         $(this).find("section").each(function () {
-            this.style.width = SectWidth.toString()+"px";
+            // STEPTOE UPDATE WIDTH HERE for two line indicator title START 09/26/16
+            if (this.id == "acc3") {
+                this.style.width = (SectWidth + 22) + "px";
+            }
+            else {
+                this.style.width = SectWidth.toString() + "px";
+            }
+            // STEPTOE UPDATE WIDTH HERE for two line indicator title END 09/26/16
+            
             this.style.height = SectHeight.toString() + "px";
 
             var H2Elmt = $(this).find("h2");
@@ -186,7 +195,7 @@ function initializeIndicators() {
 
     GWPIndicatorControl = new IndicatorControl("idGWPDiv", "GWP", "idGWPIndicator", indWidth, indHeight);//, document.getElementById("idhelp"));
     ENVIndicatorControl = new IndicatorControl("idENVDiv", "ENV", "idENVIndicator", indWidth, indHeight);//, document.getElementById("idhelp"));
-    AGRIndicatorControl = new IndicatorControl("idAGRDiv", "AGR", "idAGRIndicator",indWidth, indHeight);//, document.getElementById("idhelp"));
+    AGRIndicatorControl = new IndicatorControl("idAGRDiv", "AGR", "idAGRIndicator", indWidth, indHeight);//, document.getElementById("idhelp"));
     PWCIndicatorControl = new IndicatorControl("idPWCDiv", "PWC", "idPWCIndicator", indWidth, indHeight);//, document.getElementById("idhelp"));
     AWSIndicatorControl = new IndicatorControl("idAWSDiv", "AWS", "idAWSIndicator", indWidth, indHeight);//, document.getElementById("idhelp"));
 

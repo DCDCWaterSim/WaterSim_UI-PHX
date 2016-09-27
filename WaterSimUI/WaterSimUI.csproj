@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -153,6 +154,81 @@
     <Content Include="Assets\indicators\Images\saguaro1.png" />
     <Content Include="Assets\indicators\Images\saguaro_sm.png" />
     <Content Include="Assets\indicators\Images\sub.jpg" />
+    <Content Include="Assets\indicators\New_Images\agriculture.jpg" />
+    <Content Include="Assets\indicators\New_Images\agriculture_button_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\agriculture_flat_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\agriculture_flat_grey_color.jpg" />
+    <Content Include="Assets\indicators\New_Images\economy.jpg" />
+    <Content Include="Assets\indicators\New_Images\economy_button_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\economy_flat_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\economy_flat_grey_color.jpg" />
+    <Content Include="Assets\indicators\New_Images\environment.jpg" />
+    <Content Include="Assets\indicators\New_Images\environment_button_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\environment_flat_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\environment_flat_grey_color.jpg" />
+    <Content Include="Assets\indicators\New_Images\groundwater.jpg" />
+    <Content Include="Assets\indicators\New_Images\groundwater_button_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\groundwater_flat_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\groundwater_flat_grey_color.jpg" />
+    <Content Include="Assets\indicators\New_Images\power.jpg" />
+    <Content Include="Assets\indicators\New_Images\power_button_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\power_flat_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\power_flat_grey_color.jpg" />
+    <Content Include="Assets\indicators\New_Images\rgr_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\rgr_meter_s.jpg" />
+    <Content Include="Assets\indicators\New_Images\rg_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\rg_meter_s.jpg" />
+    <Content Include="Assets\indicators\New_Images\surfacewater.jpg" />
+    <Content Include="Assets\indicators\New_Images\surfacewater_button_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\surfacewater_flat_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\surfacewater_flat_grey_color.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\agriculture.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\economy.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\economy_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\environment.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\environment_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\Final\meter-red-green-short.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\Final\meter-red-red-short.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\Final\meter-red-red-tall.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\Final\rgr_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\Final\rgr_meter_s.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\Final\rg_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\Final\rg_meter_s.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\groundwater.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\power.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\rgr_meter %282%29.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\rgr_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\rg_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\surfacewater.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\surfacewater_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\urbanefficiency.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp old\urbanefficiency_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\agriculture.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\economy.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\economy_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\environment.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\environment_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\Final\meter-red-green-short.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\Final\meter-red-red-short.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\Final\meter-red-red-tall.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\Final\rgr_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\Final\rgr_meter_s.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\Final\rg_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\Final\rg_meter_s.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\groundwater.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\power.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\rgr_meter %282%29.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\rgr_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\rg_meter.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\surfacewater.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\surfacewater_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\urbanefficiency.jpg" />
+    <Content Include="Assets\indicators\New_Images\temp\urbanefficiency_old.jpg" />
+    <Content Include="Assets\indicators\New_Images\urbanefficiency.jpg" />
+    <Content Include="Assets\indicators\New_Images\urbanefficiency_button_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\urbanefficiency_flat_grey.jpg" />
+    <Content Include="Assets\indicators\New_Images\urbanefficiency_flat_grey_color.jpg" />
+    <Content Include="Assets\indicators\Scripts\indicator.js" />
     <Content Include="Assets\indicators\Scripts\IndicatorControl_v_4.js" />
     <Content Include="Assets\indicators\Scripts\indicatorsCore_v2.js" />
     <Content Include="Assets\indicators\Scripts\reportindicator.js" />
@@ -240,6 +316,8 @@
     <Content Include="Scripts\Chosen\index.proto.html" />
     <Content Include="Scripts\Chosen\options.html" />
     <Content Include="Scripts\Custom\Add\ConvertInputControls.js" />
+    <Content Include="Scripts\Custom\Add\State.js" />
+    <Content Include="Scripts\Custom\Add\STC.js" />
     <Content Include="Scripts\Custom\Charts\AreaChart.js" />
     <Content Include="Scripts\Custom\Charts\ChartTools.js" />
     <Content Include="Scripts\Custom\Charts\DrillDownChartBO.js" />

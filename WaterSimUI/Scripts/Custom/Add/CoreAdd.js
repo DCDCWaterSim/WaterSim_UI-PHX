@@ -166,7 +166,7 @@ $(document).ready(function () {
     // STEPTOE EDIT 07/25/16
 
     // Make geography tab active
-    //$('[aria-controls="settings-tabs-geography-2"] a').click();
+    $('[aria-controls="settings-tabs-geography-2"] a').click();
 
     // Hide Temporal tab button
     //$('[aria-controls="settings-tabs-geography-1"]').hide();
