@@ -173,9 +173,8 @@ $(document).ready(function () {
 
     // Hide 'Point-in-time' Temporal control
     $('#settings-tabs-geography-1 h3').first().hide();
-
     var login = $.urlParam('login');
-    if (login != null) {
+    if (showLogin || login != null) {
         $('body').append(
             '<div id="dialog-login" title="Login">' +
                 '<label for="groupName">Please enter a group name:</label>' +

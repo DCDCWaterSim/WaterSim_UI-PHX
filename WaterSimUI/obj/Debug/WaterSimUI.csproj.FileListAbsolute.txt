@@ -1285,7 +1285,6 @@ D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\Microsoft.ScriptManager
 D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\Microsoft.ScriptManager.WebForms.dll
 D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\Microsoft.Web.Infrastructure.dll
 D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\Newtonsoft.Json.dll
-D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\System.Net.Http.Formatting.dll
 D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\System.Web.Optimization.dll
 D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\System.Web.Providers.dll
 D:\msteptoe\Documents\git\WaterSim_UI-PHX\WaterSimUI\bin\WebGrease.dll

@@ -25,11 +25,13 @@
 // 06.01.15 - version 20.0.0
 // 08.04.15 - version 22.5 [das](Michael fixed the load base scenario, and splash screen
 //08.20.15 - version 22.7 [das] (moving the climate/drought tab)
-// -------------------------------------------------------------------------------------------------------
+// 09.19.16 - version 22.8.2 [das] reduced side content padding and sidebar - new inputs from API for controls
+// -----------------------------------------------------------------------------------------------------------
 // UI Version
-var WaterSimVersion = "UI: 22.7.1  ";
+var WaterSimVersion = "UI: 22.8.2  ";
 var UI = WaterSimVersion.fontsize(1);
 var INFO_REQUEST = null;
+var showLogin = false;
 //function SetVersion(theVersion) {
 //    console.log('theVersion:', theVersion);
 //    $("#VersionInfo").html(theVersion);
@@ -1908,7 +1910,9 @@ function getWindowType() {
         $("#dashboard-header-h1").show();
         //});
 
-        //
+        //STEPTOE EDIT BEGIN 09/27/16 ShowLogin set to true for login screen
+        //showLogin = true;
+        //STEPTOE EDIT END 09/27/16 ShowLogin set to true for login screen
 
     })();
 // E.O.F.
