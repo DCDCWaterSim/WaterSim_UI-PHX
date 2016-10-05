@@ -218,16 +218,10 @@ function drawDrillDownChartBO($jsonObj, controlID, subControls, fldLabName, fldV
 
     if (maxVal > Ymax) { Ymax = maxVal; }
     if (title == "Temporal Sustainability Indicators" && MyDataChartType_2 == ChartTypeLine) {
-        //for (var i = 0; i < chartsDataArray.length; i++) {
-        //    for (var j = 0; j < chartsDataArray[i].length; j++) {
-        //        chartsDataArray[i][j].y = (chartsDataArray[i][j].y) / (maxVal) * 100;
-        //    }
-        //}
         var wusiIndex = fldName.indexOf("Water Use Sustainability Indicator");
         for (var j = 0; j < chartsDataArray[wusiIndex].length; j++) {
             chartsDataArray[wusiIndex][j].y = (chartsDataArray[wusiIndex][j].y) / (maxVal) * 100;
-        }
-        
+        }        
         Ymax = 100;
     }
 

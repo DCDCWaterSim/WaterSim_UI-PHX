@@ -367,10 +367,15 @@ $(document).ready(function () {
             });
             // STEPTOE EDIT 08/04/15 END
 
-            // STEPTOE EDIT 10/04/15 BEGIN Reset climate effect buttonset
+            // STEPTOE EDIT 10/04/15 BEGIN Reset climate effect buttonset & presets
             $('#CLIInputUserControl_radio_0').prop('checked', true);
             $('#CLIInputUserControl_buttonset').buttonset('refresh');
-            // STEPTOE EDIT 10/04/15 END Reset climate effect buttonset
+
+            if ($('.preset.selected').attr('name') != "lp0") {
+                $('.preset.selected').toggleClass('selected');
+                $('.preset[name="lp0"]').toggleClass('selected')
+            }
+            // STEPTOE EDIT 10/04/15 END Reset climate effect buttonset & presets
 
             //====================================
             alert("You loaded a scenario successfully!!!");
@@ -1247,7 +1252,6 @@ function getJSONData(inputType) {
     eyr["FLD"] = "SCENARIO";
     eyr["VAL"] = 0;
     if ($(".preset.selected").length) {
-        //$(".preset.selected").toggleClass('selected')
         eyr["VAL"] = parseInt($(".preset.selected").attr('name').split('lp')[1]);
     }
     inputFields.push(eyr);

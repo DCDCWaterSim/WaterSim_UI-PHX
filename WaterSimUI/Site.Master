@@ -457,7 +457,7 @@
                     <ul>
                         <li><a href="#settings-tabs-scenarios-1">Base</a></li>
                         <li><a href="#settings-tabs-scenarios-2">Derived</a></li>
-                        <li><a href="#settings-tabs-scenarios-3">Presets</a></li>
+                        <li><a href="#settings-tabs-scenarios-3" style="display:none">Presets</a></li>
                     </ul>
 
                     <div id="settings-tabs-scenarios-1" style="border: medium none !important;">
@@ -474,9 +474,6 @@
                     </div>
 
                     <div id="settings-tabs-scenarios-3" style="border: medium none !important;">
-                        <%--<input type="button" id="loadP1button" class="button-no-hover-padding preset" name="lp1" value="Load Preset 1"/>
-                        <input type="button" id="loadP2button" class="button-no-hover-padding preset" name="lp2" value="Load Preset 2"/>
-                        <input type="button" id="loadP3button" class="button-no-hover-padding preset" name="lp3" value="Load Preset 3"/>--%>
                     </div>
 
                 <input type="button" value="Save Scenario" id="savebutton" class="button" /style="width:247px; margin-left: 10px">
