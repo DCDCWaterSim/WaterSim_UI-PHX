@@ -24,7 +24,11 @@ jQuery(function ($) {
 
 	    // Display an external page using an iframe
 	    var src = uri + url;
-	    $.modal('<iframe src="' + src + '" height="470" width="770" style="border:0">', {
+
+	    // STEPTOE EDIT BEGIN 09/30/16 Fix Scrollbars on modal
+	    //$.modal('<iframe src="' + src + '" height="470" width="770" style="border:0">', {
+	    $.modal('<iframe src="' + src + '" height="100%" width="100%" style="border:0">', {
+	    // STEPTOE EDIT END 09/30/16 Fix Scrollbars on modal
 	        closeHTML: "",
 	        containerCss: {
 	            backgroundColor: "#fff",

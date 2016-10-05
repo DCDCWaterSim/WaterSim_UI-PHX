@@ -15,12 +15,13 @@
                             <li><a href="#tabs-2">OUTPUTS: <br /> Supply</a></li>
                             <li><a href="#tabs-3">OUTPUTS: <br />Demand</a></li>
                             <li><a href="#tabs-4">OUTPUTS: <br />Reservoirs/Rivers</a></li>
+                            <li><a href="#tabs-5">OUTPUTS: <br />Sustainability</a></li>
                             <li><a href="#tabs-1">INPUTS: <br />Climate/River Flows</a></li>
                             <li><a href="#tabs-5"></a></li>         
                         </ul>
                  <!-------------------------  CLIMATE and DROUGHT -------------------------------------------->
                         <div id="dragResize-tab-1-off" class="click-to-top">
-                          <div id="tabs-1" style="height:432px;">      
+                          <div id="tabs-1" style="height:495px;">      
                               <div id="settings-tabs-climateDrought" style="background-color:#E6E6E6">
                                        <div id="climateTab">
                                             <h7>Climate Effect on Riverine Flows</h7><br />
@@ -28,6 +29,21 @@
                                             <div id="settings-tabs-climate" >
                                                 <Wsmi:InputUserControl ID="InputUserControl1" FieldKeyWord="COCLMADJ" runat="server" />
                                                 <Wsmi:InputUserControl ID="InputUserControl2" FieldKeyWord="SVCLMADJ" runat="server" />
+                                                <div id="GraphControls_InputUserControl123_ControlContainer" class="InputControlStyleOnly" data-key="CLIEFF">
+                                                    <span id="GraphControls_InputUserControl123_lblSliderfldName">Woot Custom Alter</span> : <span id="GraphControls_InputUserControl123_lblSliderVal" style="display:none;">0</span> 
+        <span id="GraphControls_InputUserControl123_lblunits">%</span>
+                                                    <div id="GraphControls_InputUserControl123_containerHelp" class="help">
+                                                        <input id="GraphControls_InputUserControl123_hvHelpURI" value="Content/HELPFILES/" type="hidden">
+                                                        <img src="../Images/icon_help.png">
+                                                    </div>
+                                                    <span id="GraphControls_InputUserControl123_lblSliderKeyWord" style="display: none;">CLIEFF</span>
+                                                    <div id="CLIInputUserControl_buttonset" class="radio-container realclearfix controlgroup" style="float:left;">
+                                                        <input type="radio" id="CLIInputUserControl_radio_0" name="CLIInputUserControl_radio" value="0" checked="checked"><label for="CLIInputUserControl_radio_0">None</label>
+                                                        <input type="radio" id="CLIInputUserControl_radio_1" name="CLIInputUserControl_radio" value="1"><label for="CLIInputUserControl_radio_1">Little</label>
+                                                        <input type="radio" id="CLIInputUserControl_radio_2" name="CLIInputUserControl_radio" value="2"><label for="CLIInputUserControl_radio_2">Some</label>
+                                                        <input type="radio" id="CLIInputUserControl_radio_3" name="CLIInputUserControl_radio" value="3"><label for="CLIInputUserControl_radio_3">Most</label>
+                                                    </div>
+                                                </div>
                                             </div>  
                                        </div>
                                        <!-- -->
@@ -41,15 +57,9 @@
                                             <h7>Thirty-year River Flow Record</h7><br />
                                              <div><h_1>Magnitude and Pattern</h_1></div><div id="TRACESHelpControlContainer" class="help" data-key="TRACES"><img style="" src="Images/icon_help.png" /></div>
                                                 <div id="FlowRecord" >
-                                                 <%--<ul id="flowRecordList"  >
-                                                     <li>&nbsp;          <input type="radio" id="RBdry" name="flowRecord" value="dry"   /><label id="flow1">&nbsp;Low flow years</label></li>
-                                                     <li><br />&nbsp; <input type="radio" id="RBmed" name="flowRecord" value="med" /><label id="flow2">&nbsp; Median flow years</label></li>
-                                                     <li><br />&nbsp; <input type="radio" id="RBwet" name="flowRecord" value="wet" /><label id="flow3">&nbsp; High flow years<br /></label></li>
-                                                     <li><br />&nbsp; <input type="radio" id="RBmix" name="flowRecord" value="mix" /><label id="flow4">&nbsp; High inter-annual variability <br /></label></li>
-                                                 </ul>--%>
                                                 <select id="flowRecordList" name="flowRecord">
-                                                  <option id="RBdry" value="dry">Low flow years</option> 
-                                                  <option id="RBmed" value="med" selected>Median flow years</option>
+                                                  <option id="RBdry" value="dry" selected>Low flow years</option> 
+                                                  <option id="RBmed" value="med">Median flow years</option>
                                                   <option id="RBwet" value="wet">High flow years</option>
                                                   <option id="RBmix" value="mix">High inter-annual variability</option>
                                                 </select>
@@ -59,29 +69,10 @@
                                       </div>
 
                                        <div id="startYear">
-                                           <label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1922 </label>
+                                           <label id="COFLOWYR" style="color: #990033">Colorado River Start Year: 1938 </label>
                                            <br /><br />
-                                           <label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1955</label>
+                                           <label id="SVFLOWYR" style="color: #990033">Salt-Verde Rivers Start Year: 1946</label>
                                        </div>
-
-                                       <%--<div id="droughtTab">
-                                            <h7>Drought Effect on River Flows</h7><br />
-                                                <!--<h_1> Only During Bracketed Years</h_1>-->
-                                            <div id="settings-tabs-drought">
-                                                <ul><li><a href="#settings-tabs-drought-1">Colorado</a></li>
-                                                        <li><a href="#settings-tabs-drought-2">Salt-Verde</a></li>
-                                                </ul>
-                                                <div id="settings-tabs-drought-1">
-                                                    <h3><Wsmi:InputUserControl ID="DroughtControlCO" FieldKeyWord="COUSRADJ" runat="server" /></h3>
-
- 
-                                                </div>
-                                                    <div id="settings-tabs-drought-2">
-                                                        <h3><Wsmi:InputUserControl ID="DroughtControlSTV" FieldKeyWord="SVUSRADJ" runat="server" /></h3>
-                                                    </div>
- 
-                                            </div>
-                                        </div>--%>
 
                                         <div id="droughtTab">
                                             <h7>Drought Effect on River Flows</h7><br />
@@ -207,8 +198,8 @@
 			                </div>
                                   <div class="frame" id="basic-sustain">
                                     <div id="isotope-sustainability-container">
- <%--                                      <div class="item transition Indicators"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputControl14" Type="BASEL" FieldName="SINPCTGW,SINDENV,SINDAG,SINDPC,SINYRGWR" Title="Temporal Sustainability Indicators"  SeriesColors="2"/></div></div>
-                                       <div class="item transition GroundWater"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputContro15" Type="OFMPL" FieldName="PCTGWAVL"  Title="Percent of Original Groundwater Credits Available"  SeriesColors="2"/></div></div>--%>
+                                       <div class="item transition Indicators"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputControl14" Type="BASEL" FieldName="SINPCTGW,SINDENV,SINDAG,SINDPC,SINYRGWR" Title="Temporal Sustainability Indicators"  SeriesColors="2"/></div></div>
+                                    <%--   <div class="item transition GroundWater"><div class="chart" ><Wsmo:OutputUserControl runat="server"  ID="OutputContro15" Type="OFMPL" FieldName="PCTGWAVL"  Title="Percent of Original Groundwater Credits Available"  SeriesColors="2"/></div></div>--%>
                                      </div>
     	    	                  </div>
 <%--                            <div id="isotope-sustainability-filters" class="button-group">

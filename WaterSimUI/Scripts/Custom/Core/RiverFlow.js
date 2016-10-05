@@ -231,3 +231,31 @@ function setDefaultDrought() {
 
 
 //-----------------------------------------------
+
+function initClimateEffectButtonSet() {
+    var buttonset = $("#CLIInputUserControl_buttonset").buttonset();
+    buttonset.find("input[type=radio]").change(function () {
+        var coFlow = $('.InputControl[data-key="COCLMADJ"]').find(".input-number"),
+            svFlow = $('.InputControl[data-key="SVCLMADJ"]').find(".input-number"),
+            flowRecordList = $('#flowRecordList');
+
+        switch (this.value) {
+            case "1":
+                flowRecordList.val('dry').change();
+                coFlow.val(89).change();
+                svFlow.val(85).change();
+                break;
+            case "2":
+                flowRecordList.val('dry').change();
+                coFlow.val(60).change();
+                svFlow.val(30).change();
+                break;
+            case "3":
+                flowRecordList.val('wet').change();
+                coFlow.val(120).change();
+                svFlow.val(120).change();
+                break;
+        }
+    });
+}
+initClimateEffectButtonSet();

@@ -365,7 +365,12 @@ $(document).ready(function () {
             $('.IndicatorControl_OLD').each(function () {
                 this.innerHTML = " ... "
             });
-            // STEPTOE EDIT 08/04/15 BEGIN
+            // STEPTOE EDIT 08/04/15 END
+
+            // STEPTOE EDIT 10/04/15 BEGIN Reset climate effect buttonset
+            $('#CLIInputUserControl_radio_0').prop('checked', true);
+            $('#CLIInputUserControl_buttonset').buttonset('refresh');
+            // STEPTOE EDIT 10/04/15 END Reset climate effect buttonset
 
             //====================================
             alert("You loaded a scenario successfully!!!");
@@ -376,6 +381,50 @@ $(document).ready(function () {
         }
 
     });
+
+    // STEPTOE EDIT 10/04/15 BEGIN Add preset button functionality
+    for (var i = 0; i < INFO_REQUEST.FieldInfo.length; i++) {
+        if (INFO_REQUEST.FieldInfo[i].FLD == "SCENARIO") {
+            var scenarioInfo = INFO_REQUEST.FieldInfo[i];
+            var presetTab = $('#settings-tabs-scenarios-3');
+            for (var labelIndex = 0; labelIndex < scenarioInfo.labels.length; labelIndex++) {
+                var input = $('<input type="button" id="loadPreset' +
+                    scenarioInfo.labels[labelIndex] + 'button" class="button-no-hover-padding preset" name="lp' +
+                    scenarioInfo.values[labelIndex] + '" value="' + scenarioInfo.labels[labelIndex] + '"/>');
+
+                if (labelIndex == 0)
+                    input.toggleClass('selected');
+
+                presetTab.append(input);
+            }
+            break;
+        }
+    }
+
+    $('.preset').click(function () {
+        var self = $(this);
+        if (!self.hasClass('selected')) {
+            $('.preset.selected').toggleClass('selected');
+            self.toggleClass('selected');
+            SetRunButtonState(true);
+        }
+    })
+
+    function showLowerScenarioButtons() {
+        $('#savebutton').show();
+        $('#createbutton').show();
+        $('#ReportButton').show();
+    }
+
+    // Hide/Show lower buttons depending on open scenario tab
+    $('a[href="#settings-tabs-scenarios-1"]').click(showLowerScenarioButtons);
+    $('a[href="#settings-tabs-scenarios-2"]').click(showLowerScenarioButtons);
+    $('a[href="#settings-tabs-scenarios-3"]').click(function () {
+        $('#savebutton').hide();
+        $('#createbutton').hide();
+        $('#ReportButton').hide();
+    });
+    // STEPTOE EDIT 10/04/15 END Add preset button functionality
 
 });
 
@@ -698,11 +747,23 @@ function runModel() {
                     });
                 }
             });
-            callWebService(getJSONData('DEP'));
+            //STEPTOE ADD 09/30/16 BEGIN when calling webservice change run button color
+            $(".run-model").each(function () {
+                this.style.backgroundColor = RunningColor;
+            });
+
+            setTimeout(function () { callWebService(getJSONData('DEP')); }, 0);
+            //STEPTOE ADD 09/30/16 END when calling webservice change run button color
         }
     }
-    else
-        callWebService(getJSONData('parent'));
+    else {
+        //STEPTOE ADD 09/30/16 BEGIN when calling webservice change run button color
+        $(".run-model").each(function () {
+            this.style.backgroundColor = RunningColor;
+        });
+        setTimeout(function () { callWebService(getJSONData('parent')); }, 0);
+        //STEPTOE ADD 09/30/16 END when calling webservice change run button color
+    }   
 
 }
 //STEPTOE END EDIT 07/26/16 City Selection
@@ -922,6 +983,12 @@ function setSliderValues() {
 
 //calling webservice and getting the json string
 function callWebService(jsonData) {
+
+    //STEPTOE ADD 09/30/16 BEGIN when calling webservice change run button color
+    $(".run-model").each(function () {
+        this.style.backgroundColor = RunningColor;
+    });
+    //STEPTOE ADD 09/30/16 END when calling webservice change run button color
 
     //STEPTOE ADD 07/15/15 BEGIN
     //If CoreAdd.js is included and window is Default.aspx send loading to all windows
@@ -1174,6 +1241,17 @@ function getJSONData(inputType) {
         duplicate[$(this).attr("data-key")] = true;
 
     });
+
+    //STEPTOE EDIT BEGIN 10/04/16 Scenario Presets
+    eyr = {};
+    eyr["FLD"] = "SCENARIO";
+    eyr["VAL"] = 0;
+    if ($(".preset.selected").length) {
+        //$(".preset.selected").toggleClass('selected')
+        eyr["VAL"] = parseInt($(".preset.selected").attr('name').split('lp')[1]);
+    }
+    inputFields.push(eyr);
+    //STEPTOE EDIT END 10/04/16 Scenario Presets
 
     if (inputType == 'empty') {
         var DefaultInputs = [];

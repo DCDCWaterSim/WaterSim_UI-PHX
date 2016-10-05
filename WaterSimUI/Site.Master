@@ -453,10 +453,11 @@
             <!-- Same for Salt-Verde -->
 
              <div id="settings-tabs-scenarios">
-
+                    <h2 style="text-align: center; font-weight: bold; font-size: large; margin-bottom: 8px;">Scenario</h2>
                     <ul>
-                        <li><a href="#settings-tabs-scenarios-1">Scenario:Base</a></li>
-                        <li><a href="#settings-tabs-scenarios-2">Scenario:Derived</a></li>
+                        <li><a href="#settings-tabs-scenarios-1">Base</a></li>
+                        <li><a href="#settings-tabs-scenarios-2">Derived</a></li>
+                        <li><a href="#settings-tabs-scenarios-3">Presets</a></li>
                     </ul>
 
                     <div id="settings-tabs-scenarios-1" style="border: medium none !important;">
@@ -471,6 +472,13 @@
                         </ul>
                         <input type="button" id="loadASbutton" class="button" name="saved-scenario-button" value="Load Saved Scenario"/>
                     </div>
+
+                    <div id="settings-tabs-scenarios-3" style="border: medium none !important;">
+                        <%--<input type="button" id="loadP1button" class="button-no-hover-padding preset" name="lp1" value="Load Preset 1"/>
+                        <input type="button" id="loadP2button" class="button-no-hover-padding preset" name="lp2" value="Load Preset 2"/>
+                        <input type="button" id="loadP3button" class="button-no-hover-padding preset" name="lp3" value="Load Preset 3"/>--%>
+                    </div>
+
                 <input type="button" value="Save Scenario" id="savebutton" class="button" /style="width:247px; margin-left: 10px">
                 <input type="button" value="Create New Scenario" id="createbutton" class="button" / style="width:247px; margin-left: 10px">
               </div>

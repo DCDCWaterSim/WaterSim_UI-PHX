@@ -139,6 +139,7 @@ function drawDrillDownChartBO($jsonObj, controlID, subControls, fldLabName, fldV
         Ymin = GetMin(flds, Min);
         //       Ymax = JudgeMax(flds,Max,false)
     }
+
     // Calc Tic Sizes
     var xTicSize = YearTicSize(strtYr, endYr);
     var yTicSize = VertTicSize(Ymin, Ymax);
@@ -156,11 +157,15 @@ function drawDrillDownChartBO($jsonObj, controlID, subControls, fldLabName, fldV
         year.push(yr);
     }
     
+    
     //Getting the chart data
     $.each(flds, function () {
         var chartsData = [];
         // get fldnames for column pie data
         fldName.push(fldLabName[this]);
+
+        //console.log(title + " ProvidersChart: " + fldLabName[this] + ", " + this);
+
         // build charts data
         if ((MyDataChartType_2 == ChartTypeLine) || (MyDataChartType_2 == ChartTypeArea)) {
             //adding data for multiple years
@@ -191,7 +196,7 @@ function drawDrillDownChartBO($jsonObj, controlID, subControls, fldLabName, fldV
     });
 
     // OK check for values that exceed Ymax
-    var maxVal = 0;
+    var maxVal = 0, minVal = Ymax;
     if (isStacked) {
         for (var j = 0; j < chartsDataArray[0].length; j++) {
             var totVal = 0;
@@ -206,10 +211,25 @@ function drawDrillDownChartBO($jsonObj, controlID, subControls, fldLabName, fldV
             for (var j = 0; j < chartsDataArray[i].length; j++) {
                 var theVal = chartsDataArray[i][j].y;
                 if (theVal > maxVal) { maxVal = theVal; }
+                if (theVal < minVal) { minVal = theVal; }
             }
         }
     }
+
     if (maxVal > Ymax) { Ymax = maxVal; }
+    if (title == "Temporal Sustainability Indicators" && MyDataChartType_2 == ChartTypeLine) {
+        //for (var i = 0; i < chartsDataArray.length; i++) {
+        //    for (var j = 0; j < chartsDataArray[i].length; j++) {
+        //        chartsDataArray[i][j].y = (chartsDataArray[i][j].y) / (maxVal) * 100;
+        //    }
+        //}
+        var wusiIndex = fldName.indexOf("Water Use Sustainability Indicator");
+        for (var j = 0; j < chartsDataArray[wusiIndex].length; j++) {
+            chartsDataArray[wusiIndex][j].y = (chartsDataArray[wusiIndex][j].y) / (maxVal) * 100;
+        }
+        
+        Ymax = 100;
+    }
 
     //-----------------------
     $.each(flds, function () {
