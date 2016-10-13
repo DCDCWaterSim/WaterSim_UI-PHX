@@ -344,7 +344,7 @@ function addResevoirs(targetID) {
 function addSustainabilityCharts(targetID) {
     var html = "";
     html += buildOutputControl("Indicators", "14", "BASEL", "SINPCTGW,SINDENV,SINDAG,SINDPC,SINYRGWR", "Temporal Sustainability Indicators", "2");
-    html += buildOutputControl("GroundWater", "15", "OFMPL", "PCTGWAVL", "Percent of Original Groundwater Credits Available", "2");
+    //html += buildOutputControl("GroundWater", "15", "OFMPL", "PCTGWAVL", "Percent of Original Groundwater Credits Available", "2");
     if (typeof (targetID) != "undefinded" && targetID != null)
         $('#' + targetID).append(html);
     else
@@ -358,7 +358,8 @@ function addSustainabilityCharts(targetID) {
 */
 function addSustainabilityFilters(targetID) {
     var html = "";
-    html += getButtonFilters(['Indicators', 'GroundWater'])
+    //html += getButtonFilters(['Indicators', 'GroundWater'])
+    html += getButtonFilters(['Indicators'])
     if (typeof (targetID) != "undefinded" && targetID != null)
         $('#' + targetID).append(html);
     else

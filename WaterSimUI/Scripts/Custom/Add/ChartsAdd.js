@@ -41,8 +41,8 @@ $(function () {
                         addDemand();
                     if (checkBoxValues["Reservoirs"])
                         addResevoirs();
-                    //if (checkBoxValues["Sustainability"])
-                    //    addSustainability();
+                    if (checkBoxValues["Sustainability"])
+                        addSustainability();
 
                     loadCharts();
 

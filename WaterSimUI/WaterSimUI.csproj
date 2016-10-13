@@ -238,6 +238,7 @@
     <Content Include="Content\basic_ie.css" />
     <Content Include="Content\climateTab.css" />
     <Content Include="Content\collapsible_panels.css" />
+    <Content Include="Content\HELPFILES\HELP_CLIEFF.html" />
     <Content Include="Content\HELPFILES\HELP_COUSRADJ.html" />
     <Content Include="Content\HELPFILES\HELP_DEMAND.html" />
     <Content Include="Content\HELPFILES\HELP_DOCUMENT.html" />
